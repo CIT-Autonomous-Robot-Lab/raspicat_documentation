@@ -1,0 +1,89 @@
+site_name: Raspberry Pi Cat Documentation（上田研 自律移動チーム内）
+
+theme:
+    name: material
+    # サイトの言語設定
+    language: ja
+    logo: 'https://i.gyazo.com/0ce7f9d6ae60e23bc82ec3d82071b01e.png'
+    # サイトアイコン画像
+    favicon: 'https://i.gyazo.com/2c44f78a3c7f2dc7729b7308c586fed4.png'
+    # 使用可能色は定義された21色
+    #    red, pink, purple, deep purple, indigo, blue, light blue, cyan,
+    #    teal,  green, light green, lime, yellow, amber, orange,
+    #    deep orange,   brown, grey, blue grey, white
+    # フォント。'font: false'にするとGoogleフォントを使用しなくなる
+    font:
+        text: 'Roboto'
+        code: 'Roboto Mono'
+    features:
+        # トップに戻るボタン
+        - navigation.tabs
+        - navigation.top
+        - navigation.expand
+        - content.code.annotate
+    # 配色設定
+    palette:
+        - scheme: default
+          primary: pink
+          accent: pink
+          toggle:
+              icon: material/toggle-switch-off-outline
+              name: ダークモードに切り替えます。
+
+        - scheme: slate
+          primary: idigo
+          accent: indigo
+          toggle:
+              icon: material/toggle-switch
+              name: ライトモードに切り替えます。
+
+extra:
+    # Materialデザインのアイコン拡張
+    logo:
+        # 利用可能なアイコンは以下を参照
+        # https://material.io/resources/icons/?icon=description&style=baseline
+        icon: 'developer_board'
+    # ウェブアプリマニフェストを有効化
+    # Web App Manifestについては他サイトを参照
+    manifest: 'manifest.webmanifest'
+
+markdown_extensions:
+    # !!! を使って文書内に見やすいスタイルを使う（Markdownのサンプルを参照）
+    - admonition
+    # [^1] を使って注釈を使う（Markdownのサンプルを参照）
+    - footnotes
+    # コードハイライトを使う
+    - codehilite:
+        # 言語を表記する
+        guess_lang: true
+        pygments_style: colorful
+        # 行数を表示
+        linenums: false
+
+nav:
+
+- Home:
+  - このサイトについて: home/index.md
+- Document:
+  - Raspberry Pi Catについて: document/raspicat_documentaion.md
+  - ちょっとだけ面倒くさい環境構築編:
+    - Raspberry Pi Cat: document/environment/Raspberry Pi Cat/environment.md
+    - Raspberry Pi Cat V2: document/environment/Raspberry Pi Cat V2/environment.md
+
+  - 動かしてみよう編:
+    - Mapping:
+      - Raspberry Pi Cat:
+        - Raspberry Pi 3B+ & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat/raspi3_pc_mapping.md
+        - PC(rosbag)でマッピング: document/lets_move/mapping/Raspberry Pi Cat/pc_rosbag_mapping.md 
+      - Raspberry Pi Cat V2:
+        - Raspberry Pi 4B+ & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat V2/raspi4_pc_mapping.md
+
+    - Navigation:
+      - Raspberry Pi Cat:
+        - Raspberry Pi 3B+ & PCでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat/raspi3_pc_navigation.md
+        - Raspberry Pi 3B+のみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat/raspi3_only_navigation.md
+      - Raspberry Pi Cat V2:
+        - Raspberry Pi 4B+のみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat V2/raspi4_only_navigation.md
+- Repository: 
+  - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
+  - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repojitory/repository_description.md
