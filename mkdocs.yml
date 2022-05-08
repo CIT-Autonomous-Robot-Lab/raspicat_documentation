@@ -63,7 +63,7 @@ markdown_extensions:
 nav:
 
 - Home:
-  - このサイトについて: home/index.md
+  - このサイトについて: index.md
 - Document:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
   - ちょっとだけ面倒くさい環境構築編:
