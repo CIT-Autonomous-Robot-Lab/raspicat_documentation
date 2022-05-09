@@ -4,9 +4,9 @@ theme:
     name: material
     # サイトの言語設定
     language: ja
-    logo: 'https://i.gyazo.com/0ce7f9d6ae60e23bc82ec3d82071b01e.png'
+    logo: 'https://i.gyazo.com/667c1d52a447f38d53cd52beadbb40f1.png'
     # サイトアイコン画像
-    favicon: 'https://i.gyazo.com/2c44f78a3c7f2dc7729b7308c586fed4.png'
+    favicon: 'https://i.gyazo.com/ed2afbfd0328143ef7e2c0418172348f.png'
     # 使用可能色は定義された21色
     #    red, pink, purple, deep purple, indigo, blue, light blue, cyan,
     #    teal,  green, light green, lime, yellow, amber, orange,
@@ -86,4 +86,4 @@ nav:
         - Raspberry Pi 4B+のみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat V2/raspi4_only_navigation.md
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
-  - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repojitory/repository_description.md
+  - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repository/repository_description.md
