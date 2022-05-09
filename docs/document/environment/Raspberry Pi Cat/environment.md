@@ -137,8 +137,9 @@ source ~/raspicat_ws/devel/setup.bash
 echo "source ~/raspicat_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
-### 5. ノートPCにROSをインストール
+### 5. ノートPCのセットアップ（ROSインストール、ROSパッケージのBuild）
 
+* ROSのインストール
 `Ubuntu 18.04 desktop`の場合は、[ryuichiueda/ros_setup_scripts_Ubuntu18.04_desktop](https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu18.04_desktop.git)、
 `Ubuntu 20.04 desktop`の場合は、[ryuichiueda/ros_setup_scripts_Ubuntu20.04_desktop](https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu20.04_desktop.git)
 をクローンしましょう。
@@ -161,6 +162,51 @@ cd ros_setup_scripts_Ubuntu20.04_desktop
 ./step0.bash
 ./step1.bash
 sudo apt-get install python3-catkin-tools
+```
+
+* ROSパッケージのクローン
+
+ROSを使用してRaspberry Pi Catでナビゲーションを行うために必要なパッケージをインストールする。
+
+ワークスペースを構築し、パッケージをクローン、依存パッケージのインストール、そしてパッケージのビルドを行い
+ビルドしたパッケージの情報を読み込みます。
+
+##### ワークスペースの構築
+```
+mkdir -p ~/raspicat_ws/src
+```
+
+##### パッケージをクローン
+```
+cd ~/raspicat_ws/src
+git clone https://github.com/rt-net/raspicat_slam_navigation.git
+git clone https://github.com/rt-net/raspicat_gamepad_controller.git
+git clone https://github.com/uhobeike/raspicat_navigation.git
+```
+
+##### 依存パッケージのインストール
+```
+cd ~/raspicat_ws
+rosdep update
+rosdep install -r -y --from-paths --ignore-src ./.
+```
+
+##### パッケージのビルド
+```
+cd ~/raspicat_ws
+catkin build
+```
+
+##### ビルドしたパッケージの情報を読み込み
+```
+source ~/raspicat_ws/devel/setup.bash
+```
+
+##### ビルドしたパッケージの情報の読み込みの自動化
+以下のコマンドを実行した後はターミナルを開いた場合、もしくは
+`source ~/.bashrc`をした場合にビルドしたパッケージの情報が読み込まれます。
+```
+echo "source ~/raspicat_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
 ### 6. ノートPCとRaspberry Pi間でROSの通信を行うための設定をする
