@@ -127,7 +127,7 @@ sudo apt install python-catkin-tools
 ```
 # Ubuntu 20.04 server
 git clone https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu20.04_server.git
-cd ros_setup_scripts_Ubuntu18.04_server
+cd ros_setup_scripts_Ubuntu20.04_server
 ./step0.bash
 ./step1.bash
 sudo apt-get install python3-catkin-tools
@@ -300,4 +300,4 @@ export ROS_HOSTNAME=10.42.0.12
 
 スレーブ側で`rostopic list`等のコマンドを実行し通信が出来ていることを確認しましょう。
 
-ここで注意ですが、`.bashrc`を変更したら`source`を忘れずにしましょう
+**ここで注意ですが、`.bashrc`を変更したら`source`を忘れずにしましょう**
