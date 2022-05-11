@@ -1,5 +1,9 @@
 何か思いついて、どこに書こうと思ったあなた！ここに書いて良いですよ！
 
+エラーコードをとりあえず貼りたいって!？
+
+どうぞ！
+
 <script src="https://giscus.app/client.js"
         data-repo="uhobeike/raspicat_documentation"
         data-repo-id="R_kgDOHTQycg"
