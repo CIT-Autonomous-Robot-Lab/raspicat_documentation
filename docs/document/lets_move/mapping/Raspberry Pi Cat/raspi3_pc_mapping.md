@@ -15,7 +15,7 @@ Raspberry Pi動作時に電源を取る時は**ショート**に気を付けま�
 | ------------------- | ---------------- | 
 | Raspberry Pi Cat    | ノートPC         | 
 | LANケーブル         | 2D LiDAR（遠くまで見れるかつデータにノイズが少ないものが良い）         | 
-| Joystick controller |                  | 
+| Joystick controller | IMU（無くても大丈夫）                 | 
 
 ## 実行コマンド
 
@@ -25,38 +25,15 @@ Raspberry Pi動作時に電源を取る時は**ショート**に気を付けま�
 roslaunchを立ち上げるとroscoreが立ち上がっていない場合に立ち上げてくれる仕組みになってるので、
 あえてroscoreを書いていません。
 
-### 無線Joystick controllerを使用する場合
+ここで注意ですが動かす前は**非常停止スイッチがOFF**になっていることを確認しましょう。
 
 ```
 # Raspberry Pi 3B+
-roslaunch raspicat raspicat.launch
-roslaunch raspicat_slam_navigation slam_remote_robot_usb_urg.launch
+roslaunch raspicat_navigation raspicat_bringup.launch urg_serial_port:=/dev/ttyACM0 urg_ether:=false urg_usb:=true
 ```
 
 ```
 # ノートPC
-roslaunch raspicat_slam_navigation slam_remote_pc.launch
-```
-
-```
-# ノートPC（マッピング完了後）
-rosrun map_servser map_saver -f ~/map
-```
-
-### 有線Joystick controllerを使用する場合
-
-事前に[この部分](https://github.com/CIT-Autonomous-Robot-Lab/raspicat_slam/blob/bb49278db7d7af30aa1d046f30093304857f4813/launch/slam_remote_robot_usb_urg.launch#L6-L9)
-を削除しておく必要があるので削除orコメントアウトをしましょう。(ノートPC側でJoystick controllerを使用したいので。無線の場合は削除しなくても大丈夫です。)
-
-```
-# Raspberry Pi 3B+
-roslaunch raspicat raspicat.launch
-roslaunch raspicat_slam_navigation slam_remote_robot_usb_urg.launch
-```
-
-```
-# ノートPC
-roslaunch raspicat_gamepad_controller logicool.launch
 roslaunch raspicat_slam_navigation slam_remote_pc.launch
 ```
 

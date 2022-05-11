@@ -38,7 +38,7 @@ Raspberry Pi用のUbuntu imageをダウンロードし、SDカードに焼きま
 ### 2. 焼いたSDカードをRaspberry Piに挿してRaspberry Pi Catを起動
 焼いたSDカードをRaspberry Piに挿して、Raspberry Piの電源を入れましょう！
 
-この時、非常停止ボタンを押していることを確認しましょう（安全のため）。
+この時、**非常停止スイッチがON**になっていることを確認しましょう（安全のため）。
 
 ### 3. LANケーブルでノートPCとRaspberry Pi間で接続し、ssh接続
 Raspberry Piの環境構築を行うためにはモニターやネットの設定が必要になってしまいます。
