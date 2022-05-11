@@ -67,9 +67,9 @@ RViz上のRaspberry Pi Cat位置と実際のRaspberry Pi Cat位置を揃える�
 
 #### ・[move_base](http://wiki.ros.org/move_base)
 
-#### ・[global_planner](http://wiki.ros.org/global_planner)
+#### ・[global_planner(大域自己位置推定)](http://wiki.ros.org/global_planner)
 
-#### ・[local_planner](http://wiki.ros.org/dwa_local_planner)
+#### ・[local_planner(局所的自己位置推定)](http://wiki.ros.org/dwa_local_planner)
 
 #### ・[costmap_2d(障害物用)](http://wiki.ros.org/costmap_2d)
 

@@ -1,4 +1,4 @@
-本サイトで**実装して欲しい機能や項目等**について、こちらで受付しております。
+本サイトで**実装して欲しい機能や項目や修正等**について、こちらで受付しております。
 
 <script src="https://giscus.app/client.js"
         data-repo="uhobeike/raspicat_documentation"
