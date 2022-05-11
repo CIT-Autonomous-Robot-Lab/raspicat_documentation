@@ -68,6 +68,7 @@ nav:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
   - ちょっとだけ面倒くさい環境構築編:
     - Raspberry Pi Cat: document/environment/Raspberry Pi Cat/environment.md
+    # - Raspberry Pi Cat（WSL2): document/environment/Raspberry Pi Cat_wsl2/environment.md
     - Raspberry Pi Cat V2: document/environment/Raspberry Pi Cat V2/environment.md
 
   - 動かしてみよう編:
@@ -87,3 +88,14 @@ nav:
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
   - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repository/repository_description.md
+# - Error resolution:
+#   - Raspberry Pi Cat: error_resolution/raspicat_error_resolution.md
+#   - Raspberry Pi Cat（WSL2）: error_resolution/raspicat_error_resolution_wsl2.md
+#   - Raspberry Pi Cat V2: error_resolution/raspicat_v2_error_resolution.md
+#   - Raspberry Pi Cat V2（WSL2）: error_resolution/raspicat_v2_error_resolution_wsl2.md
+# - Good things to do:
+#   - やると良いこと集（初めての方は見ると良いかも？）: good_things_to_do/good_things_to_do.md
+- Chat Corner?:
+  - 雑談: chat_corner/idle_talk.md
+  - 要望: chat_corner/request.md
+  - メモ(誰でもどうぞw): chat_corner/memo.md
