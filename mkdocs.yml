@@ -92,7 +92,7 @@ nav:
 # - Good things to do:
 #   - やると良いこと集（初めての方は見ると良いかも？）: good_things_to_do/good_things_to_do.md
 - Chat Corner 💬:
-  - 雑談: chat_corner/idle_talk.md
+  - News📰 : chat_corner/news.md
   - 要望: chat_corner/request.md
   - エラー集/解決策:
     - Raspberry Pi Cat: chat_corner/error_resolution/raspicat_error_resolution.md

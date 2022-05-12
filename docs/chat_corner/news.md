@@ -1,8 +1,4 @@
-ゆるーいトークをする場所。
-
-良さげなパッケージや良さげな論文があったら共有しましょう！
-
-YoutubeやTwitterのリンクを貼るだけでもOK！
+何かのアップデートを行った際にお知らせをするための場所です。
 
 <script src="https://giscus.app/client.js"
         data-repo="uhobeike/raspicat_documentation"
