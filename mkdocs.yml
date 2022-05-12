@@ -103,3 +103,5 @@ nav:
 - Information:
   - 上田研にある移動ロボット/センサー: information/robot_sensor.md
   - 動画集: information/raspicat_mp4.md
+- Good Things to Do:
+  - やると良いかも集め: good_things_to_do/good_things_to_do.md
