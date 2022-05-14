@@ -1,27 +1,30 @@
 site_name: Raspberry Pi Cat Documentation（上田研 自律移動チーム内）
+site_url: https://uhobeike.github.io/raspicat_documentation/
+site_author: Tatsuhiro Ikebe
+
+repo_name: uhobeike/raspicat_documentation 
+repo_url: https://github.com/uhobeike/raspicat_documentation
+repo: fontawesome/brands/github
+
+copyright: Copyright &copy; 2022 Tatsuhiro Ikebe
 
 theme:
     name: material
-    # サイトの言語設定
     language: ja
     logo: 'https://i.gyazo.com/667c1d52a447f38d53cd52beadbb40f1.png'
-    # サイトアイコン画像
     favicon: 'https://i.gyazo.com/ed2afbfd0328143ef7e2c0418172348f.png'
     # 使用可能色は定義された21色
     #    red, pink, purple, deep purple, indigo, blue, light blue, cyan,
     #    teal,  green, light green, lime, yellow, amber, orange,
     #    deep orange,   brown, grey, blue grey, white
-    # フォント。'font: false'にするとGoogleフォントを使用しなくなる
     font:
         text: 'Roboto'
         code: 'Roboto Mono'
     features:
-        # トップに戻るボタン
         - navigation.tabs
         - navigation.top
         - navigation.expand
         - content.code.annotate
-    # 配色設定
     palette:
         - scheme: default
           primary: pink
@@ -36,16 +39,21 @@ theme:
           toggle:
               icon: material/toggle-switch
               name: ライトモードに切り替えます。
+    icon:
+      repo: fontawesome/brands/github
 
 extra:
-    # Materialデザインのアイコン拡張
     logo:
         # 利用可能なアイコンは以下を参照
         # https://material.io/resources/icons/?icon=description&style=baseline
         icon: 'developer_board'
     # ウェブアプリマニフェストを有効化
-    # Web App Manifestについては他サイトを参照
     manifest: 'manifest.webmanifest'
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/uhobeike
+      - icon: fontawesome/brands/twitter
+        link: https://twitter.com/BEIKE_RE
 
 markdown_extensions:
     # !!! を使って文書内に見やすいスタイルを使う（Markdownのサンプルを参照）
@@ -54,10 +62,8 @@ markdown_extensions:
     - footnotes
     # コードハイライトを使う
     - codehilite:
-        # 言語を表記する
         guess_lang: true
         pygments_style: colorful
-        # 行数を表示
         linenums: false
 
 nav:
