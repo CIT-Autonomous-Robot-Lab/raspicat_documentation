@@ -70,6 +70,7 @@ nav:
     - Raspberry Pi Cat: document/environment/Raspberry Pi Cat/environment.md
     # - Raspberry Pi Cat（WSL2): document/environment/Raspberry Pi Cat_wsl2/environment.md
     - Raspberry Pi Cat V2: document/environment/Raspberry Pi Cat V2/environment.md
+    - Wireless(Raspberry Pi 4B): document/environment/wireless/wireless_raspi4.md
 
   - 動かしてみよう編:
     - Mapping:
