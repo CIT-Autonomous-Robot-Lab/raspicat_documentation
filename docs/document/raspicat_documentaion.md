@@ -2,12 +2,12 @@
 [こちらのサイト(Raspberry Pi Cat 屋外でも動かせる中型2輪ロボット)](https://rt-net.jp/products/raspberry-pi-cat/)に説明を譲ります。
 
 ## 2つのバージョンが存在
-**Raspberry Pi 3B+**と**Raspberry Pi 4B+**のどちらかが搭載されたRaspberry Pi Catが存在します。
+**Raspberry Pi 3B+**と**Raspberry Pi 4B**のどちらかが搭載されたRaspberry Pi Catが存在します。
 また、それぞれは搭載されている`Raspberry Pi`の他に`モータ`や`バッテーリ`や`機体の高さ`の違いがあります。
 
 
 とりあえず、今の所`Raspberry Pi 3B+`が搭載されている方を**Raspberry Pi Cat**、
-`Raspberry Pi 4B+`が搭載されている方を**Raspberry Pi Cat V2**と呼んでいます。
+`Raspberry Pi 4B`が搭載されている方を**Raspberry Pi Cat V2**と呼んでいます。
 
 ## 動かす目的はなんですか？
 人によってそれぞれだと思いますが

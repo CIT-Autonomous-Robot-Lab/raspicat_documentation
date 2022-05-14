@@ -28,7 +28,7 @@
 
 ## Raspberry Pi Cat V2関連のパッケージ
 
-### Raspberry Pi 4B+
+### Raspberry Pi 4B
 #### 更新中
 ### ノートPC
 #### 更新中
