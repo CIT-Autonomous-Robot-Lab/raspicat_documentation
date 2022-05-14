@@ -77,20 +77,24 @@ nav:
         - Raspberry Pi 3B+ & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat/raspi3_pc_mapping.md
         - PC(rosbag)でマッピング: document/lets_move/mapping/Raspberry Pi Cat/pc_rosbag_mapping.md 
       - Raspberry Pi Cat V2:
-        - Raspberry Pi 4B+ & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat V2/raspi4_pc_mapping.md
+        - Raspberry Pi 4B & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat V2/raspi4_pc_mapping.md
 
     - Navigation:
       - Raspberry Pi Cat:
         - Raspberry Pi 3B+ & PCでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat/raspi3_pc_navigation.md
         - Raspberry Pi 3B+のみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat/raspi3_only_navigation.md
       - Raspberry Pi Cat V2:
-        - Raspberry Pi 4B+のみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat V2/raspi4_only_navigation.md
+        - Raspberry Pi 4Bのみでナビゲーション: document/lets_move/navigation/Raspberry Pi Cat V2/raspi4_only_navigation.md
+
+    - Waypoint Navigation:
+      - Raspberry Pi Cat:
+        - Raspberry Pi 3B+ & PCでナビゲーション: document/lets_move/waypoint_navigation/Raspberry Pi Cat/raspi3_pc_waypoint_navigation.md
+        - Raspberry Pi 3B+のみでナビゲーション: document/lets_move/waypoint_navigation/Raspberry Pi Cat/raspi3_only_waypoint_navigation.md
+      - Raspberry Pi Cat V2:
+        - Raspberry Pi 4Bのみでナビゲーション: document/lets_move/waypoint_navigation/Raspberry Pi Cat V2/raspi4_only_waypoint_navigation.md
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
   - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repository/repository_description.md
-
-# - Good things to do:
-#   - やると良いこと集（初めての方は見ると良いかも？）: good_things_to_do/good_things_to_do.md
 - Chat Corner 💬:
   - News📰 : chat_corner/news.md
   - 要望: chat_corner/request.md
