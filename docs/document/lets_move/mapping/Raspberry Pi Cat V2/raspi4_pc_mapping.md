@@ -1,1 +1,0 @@
-# Raspberry Pi Catと同じ
