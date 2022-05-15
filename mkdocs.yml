@@ -84,7 +84,7 @@ nav:
         - Raspberry Pi 3B+ & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat/raspi3_pc_mapping.md
         - PC(rosbag)でマッピング: document/lets_move/mapping/Raspberry Pi Cat/pc_rosbag_mapping.md 
       - Raspberry Pi Cat V2:
-        - Raspberry Pi 4B & PCでマッピング: document/lets_move/mapping/Raspberry Pi Cat V2/raspi4_pc_mapping.md
+        - Raspberry Pi 4Bのみでマッピング: document/lets_move/mapping/Raspberry Pi Cat V2/raspi4_only_mapping.md
 
     - Navigation:
       - Raspberry Pi Cat:
