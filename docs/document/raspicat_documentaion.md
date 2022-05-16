@@ -9,6 +9,10 @@
 とりあえず、今の所`Raspberry Pi 3B+`が搭載されている方を**Raspberry Pi Cat**、
 `Raspberry Pi 4B`が搭載されている方を**Raspberry Pi Cat V2**と呼んでいます。
 
+上田研にあるRaspberry Pi Catは全てRaspberry Pi 4Bに換装していますが、モータ等は同じなので
+呼び名は変わらずRaspberry Pi Catとしています。しかし換装した理由でドキュメントでは
+Raspberry Pi Cat V2の環境構築手順や動作手順を参考にする必要があったりします。
+
 ## 動かす目的はなんですか？
 人によってそれぞれだと思いますが
 大体２つぐらいに絞れる気がします。
