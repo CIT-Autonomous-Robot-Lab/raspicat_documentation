@@ -36,5 +36,5 @@ roslaunch raspicat_slam_navigation slam_remote_pc.launch
 
 ```
 # Raspberry Pi 4B（マッピング完了後）
-rosrun map_servser map_saver -f ~/map
+rosrun map_server map_saver -f ~/map
 ```

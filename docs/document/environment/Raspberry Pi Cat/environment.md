@@ -77,7 +77,12 @@ dateで時間を確認してみましょう。時間が過去になっている�
 
 `sudo date -s "2022/2/22 22:22:22"`という感じに、時間を手作業で修正しましょう。
 
+どうやらタイムゾーンも修正する必要があるそうです。
+日本時間であるJSTにする必要があります。
+
 ```sh
+sudo date -s ''
+sudo timedatectl set-timezone Asia/Tokyo
 sudo apt update
 sudo apt upgrade
 ```
@@ -90,6 +95,7 @@ sudo apt upgrade
 インストールが上手く行くと音が鳴ると思います。
 ```
 git clone https://github.com/rt-net/RaspberryPiMouse.git
+sudo apt install build-essential
 cd RaspberryPiMouse/utils
 ./build_install.bash
 ```
