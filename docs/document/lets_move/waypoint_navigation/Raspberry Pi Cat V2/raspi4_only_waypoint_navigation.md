@@ -19,7 +19,8 @@ Waypoint navigationを行う手順は大体こんな感じです。
 1. マップを用意する(map.pgm、map.yaml)
 2. 走行してい欲しいような経路を考えながらマップ上にwaypointを配置していく
 3. 配置されたwaypointをcsvやyamlといったデータ形式に変換する（現在はcsvのみ、今後は可読性のためにyamlも追加予定）
-4. 変換されたデータ形式を用いて、RVizでのWaypointデータの表示、move_baseに順次目的地を送る
+4. ノートPC上で取得したcsvデータをRaspberry Piの方に持っていく
+5. 変換されたデータ形式を用いて、RVizでのWaypointデータの表示、move_baseに順次目的地を送る
 
 という感じの手順です。なんとなく大体わかったと思うので、Waypoint navigationを実際にやってみましょう！
 
@@ -68,7 +69,15 @@ RVizでの表示がイケてないんですけど(ウェイポイントの番号
 
 バグがあるので現在対応中。
 
-5.変換されたデータ形式(今回はcsv)を用いて、Waypint Navigation(move_baseに順次目的地を送る)
+5.ノートPC上で取得したcsvデータをRaspberry Piの方に持っていく
+
+`scp`コマンドを使用します。
+
+```
+sudo scp $(rospack find raspicat_navigation)/config/csv/waypoint.csv ubuntu@X.X.X.X:$(rospack find raspicat_navigation)/config/csv/
+```
+
+6.変換されたデータ形式(今回はcsv)を用いて、Waypint Navigation(move_baseに順次目的地を送る)
 
 おまたせしました！
 
