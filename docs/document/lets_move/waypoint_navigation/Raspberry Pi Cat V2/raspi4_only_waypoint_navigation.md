@@ -35,8 +35,6 @@ Waypoint navigationを行う手順は大体こんな感じです。
 
 `map_file`は絶対パスである必要があります。
 
-csv_fileは`csv_file:=$(rospack find raspicat_navigation)/config/csv/waypoint.csv`とすると良いと思います。
-
 ちなみに`$(rospack find rosのパッケージ名)`は結構便利です。（タブ補完は効かないけど）
 
 ```
@@ -74,7 +72,7 @@ RVizでの表示がイケてないんですけど(ウェイポイントの番号
 `scp`コマンドを使用します。
 
 ```
-sudo scp $(rospack find raspicat_navigation)/config/csv/waypoint.csv ubuntu@X.X.X.X:$(rospack find raspicat_navigation)/config/csv/
+sudo scp $(rospack find raspicat_navigation)/config/csv/waypoint.csv ubuntu@X.X.X.X:~/raspicat_ws/src/raspicat_navigation/config/csv/
 ```
 
 6.変換されたデータ形式(今回はcsv)を用いて、Waypint Navigation(move_baseに順次目的地を送る)
