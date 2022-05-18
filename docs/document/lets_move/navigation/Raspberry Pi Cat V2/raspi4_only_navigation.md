@@ -55,17 +55,17 @@ roslaunch raspicat_navigation raspicat_bringup_navigation.launch waypoint_naviga
 
 ```
 # ノートPC
-rosrun rviz rviz -d $(rospack find raspicat_navigation)/config/rviz/raspicat_navigation_3d.rviz
+rosrun rviz rviz -d $(rospack find raspicat_navigation)/config/rviz/raspicat_navigation.rviz
 ```
 
 * Ethernet LiDARの場合
 
 ```
 # Raspberry Pi 4B
-roslaunch raspicat_navigation raspicat_bringup_navigation.launch waypoint_navigation:=false urg_usb:=true urg_ether:=false mcl_init_pose_x:=0 mcl_init_pose_y:=0 mcl_init_pose_a:=0 mcl_map_file:="" urg_ip_address:=""
+roslaunch raspicat_navigation raspicat_bringup_navigation.launch waypoint_navigation:=false urg_usb:=false urg_ether:=true mcl_init_pose_x:=0 mcl_init_pose_y:=0 mcl_init_pose_a:=0 mcl_map_file:="" urg_ip_address:=""
 ```
 
 ```
 # ノートPC
-rosrun rviz rviz -d $(rospack find raspicat_navigation)/config/rviz/raspicat_navigation_3d.rviz
+rosrun rviz rviz -d $(rospack find raspicat_navigation)/config/rviz/raspicat_navigation.rviz
 ```
