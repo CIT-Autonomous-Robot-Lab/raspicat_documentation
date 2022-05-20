@@ -32,6 +32,11 @@ roslaunch raspicat_navigation raspicat_bringup.launch urg_ether:=false urg_usb:=
 roslaunch raspicat_slam_navigation slam_remote_pc.launch
 ```
 
+```
+# Joystick controllerを接続している方で実行を行う
+roslaunch raspicat_gamepad_controller logicool.launch
+```
+
 ↓`Raspberry Pi 4B`のみでナビゲーションを行う場合は`Raspberry Pi 4B`に保存すると良いかもしれません。
 
 ```

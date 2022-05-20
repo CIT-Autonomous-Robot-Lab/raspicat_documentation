@@ -37,7 +37,11 @@ Waypoint navigationを行う手順は大体こんな感じです。
 
 ちなみに`$(rospack find rosのパッケージ名)`は結構便利です。（タブ補完は効かないけど）
 
+↓**Wayopintのセット**は**ノートPCのみでの動作を想定**していますが、**Raspberry Pi Catと通信を行っている場合**は
+**masterの方でroscoreを立ち上げておく必要**があります。
+
 ```
+# ノートPC側
 roslaunch raspicat_navigation waypoint_set.launch csv_file:="$(find raspicat_navigation)/config/csv/" map_file:=""
 ```
 
@@ -72,6 +76,7 @@ RVizでの表示がイケてないんですけど(ウェイポイントの番号
 `scp`コマンドを使用します。
 
 ```
+# ノートPC側
 sudo scp $(rospack find raspicat_navigation)/config/csv/waypoint.csv ubuntu@X.X.X.X:~/raspicat_ws/src/raspicat_navigation/config/csv/
 ```
 
