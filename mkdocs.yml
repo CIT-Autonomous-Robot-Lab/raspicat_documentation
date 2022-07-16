@@ -117,4 +117,5 @@ nav:
 - Good Things to Do:
   - やると良いかも集め: good_things_to_do/good_things_to_do.md
 - Study Meeting:
-  - gitを学ぶ回: study_meeting/2022_git_github/git.md
+  - Gitを学ぶ回: study_meeting/2022_git_github/git.md
+  - GitHubを学ぶ回: study_meeting/2022_git_github/github.md
