@@ -121,10 +121,7 @@ nav:
   - GitHubを学ぶ回: study_meeting/2022_git_github/github.md
   - 詳解確率ロボティクスを読む回:
     - 何をする？: study_meeting/2022_detailed_explanation_probabilistic_robotics/what_to_do.md
-    - 第1章 はじめに: study_meeting/2022_detailed_explanation_probabilistic_robotics/1.md
-    - 第2章 確率・統計の基礎: study_meeting/2022_detailed_explanation_probabilistic_robotics/2.md
-    - 第3章 自律移動ロボットのモデル化: study_meeting/2022_detailed_explanation_probabilistic_robotics/3.md
-    - 第4章 不確かさのモデル化: study_meeting/2022_detailed_explanation_probabilistic_robotics/4.md
-    - 第5章 パーティクルフィルタによる自己位置推定: study_meeting/2022_detailed_explanation_probabilistic_robotics/5.md
-    - 第6章 カルマンフィルタによる自己位置推定: study_meeting/2022_detailed_explanation_probabilistic_robotics/6.md
-    - 第7章 自己位置推定の諸問題: study_meeting/2022_detailed_explanation_probabilistic_robotics/7.md
+    - 第1回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/1.md
+    - 第2回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/2.md
+    - 第3回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/3.md
+    - 第4回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/4.md
