@@ -119,6 +119,7 @@ nav:
 - Study Meeting:
   - Gitを学ぶ回: study_meeting/2022_git_github/git.md
   - GitHubを学ぶ回: study_meeting/2022_git_github/github.md
+  - ROSを学ぶ回（ROSとは）: study_meeting/2022_ros/what_ros.md
   - 詳解確率ロボティクスを読む回:
     - 何をする？: study_meeting/2022_detailed_explanation_probabilistic_robotics/what_to_do.md
     - 第1回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/1.md
