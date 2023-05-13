@@ -23,7 +23,6 @@ theme:
     features:
         - navigation.tabs
         - navigation.top
-        - navigation.expand
         - content.code.annotate
     palette:
         - scheme: default
@@ -99,6 +98,9 @@ nav:
         - Raspberry Pi 3B+のみでナビゲーション: document/lets_move/waypoint_navigation/Raspberry Pi Cat/raspi3_only_waypoint_navigation.md
       - Raspberry Pi Cat V2:
         - Raspberry Pi 4Bのみでナビゲーション: document/lets_move/waypoint_navigation/Raspberry Pi Cat V2/raspi4_only_waypoint_navigation.md
+  - ROS 2勉強編:
+      - Raspberry Pi Cat Simulator（ROS 2）: document/ros2_study/raspicat_simulator.md
+
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
   - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repository/repository_description.md
