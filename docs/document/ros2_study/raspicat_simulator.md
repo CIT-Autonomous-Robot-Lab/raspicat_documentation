@@ -154,3 +154,17 @@ ros2 launch raspicat_gazebo raspicat_with_iscas_museum.launch.py
 ros2 service call /motor_power std_srvs/SetBool '{data: true}'
 ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
 ```
+
+## B3への課題
+
+1. 
+  指定された経路通りにロボットを走行させましょう！  
+  `Gazeboを録画したもの`を、slackに貼り付けてください
+  ![](https://i.gyazo.com/793a7f9ee6e02328820ffb8a7517287c.png)
+2. 
+  ロボットの動かし方がわかったら、マッピングをしましょう！  
+  `保存した地図であるmap.pgm`をslackに貼り付けてください  
+3. 
+  作成した地図を使用して、ロボットのナビゲーションを行いましょう！  
+  `1`と同様に指定された経路通りにロボットを走行させましょう！  
+  `GazeboとRVizの両方を同時に録画したもの`をslackに貼り付けてください
