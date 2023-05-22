@@ -24,6 +24,9 @@ theme:
         - navigation.tabs
         - navigation.top
         - content.code.annotate
+        - content.code.copy
+        - content.code.select
+        - content.code.annotate
     palette:
         - scheme: default
           primary: pink
@@ -59,11 +62,19 @@ markdown_extensions:
     - admonition
     # [^1] を使って注釈を使う（Markdownのサンプルを参照）
     - footnotes
-    # コードハイライトを使う
-    - codehilite:
-        guess_lang: true
-        pygments_style: colorful
-        linenums: false
+    - pymdownx.tabbed:  # タブで文章を切り替えられる
+        alternate_style: true
+    - admonition  # Warningとかの飾り付けができる
+    - pymdownx.highlight  # コードブロック用
+    - pymdownx.superfences  # コードブロック用
+    - footnotes  # 注釈用
+    - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
 
 nav:
 
