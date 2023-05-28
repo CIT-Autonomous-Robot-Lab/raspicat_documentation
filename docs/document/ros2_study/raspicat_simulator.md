@@ -67,13 +67,34 @@ xhost +local:docker
 === "GPUあり"
 
     ``` sh
-    docker run --rm -it -u $(id -u):$(id -g) --privileged --gpus all --net=host --ipc=host --env="DISPLAY=$DISPLAY" --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh raspicat-sim:humble
+    docker run --rm -it \
+              -u $(id -u):$(id -g) \
+              --gpus all \
+              --privileged \
+              --net=host \
+              --ipc=host \
+              --env="DISPLAY=$DISPLAY" \
+              --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh \
+              --mount type=bind,source=/home/$USER/.gitconfig,target=/home/$USER/.gitconfig \
+              --mount type=bind,source=/usr/share/zoneinfo/Asia/Tokyo,target=/etc/localtime \
+              --name raspicat-sim \
+              raspicat-sim:humble
     ```
 
 === "GPUなし"
 
     ``` sh
-    docker run --rm -it -u $(id -u):$(id -g) --privileged --net=host --ipc=host --env="DISPLAY=$DISPLAY" --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh raspicat-sim:humble
+    docker run --rm -it \
+              -u $(id -u):$(id -g) \
+              --privileged \
+              --net=host \
+              --ipc=host \
+              --env="DISPLAY=$DISPLAY" \
+              --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh \
+              --mount type=bind,source=/home/$USER/.gitconfig,target=/home/$USER/.gitconfig \
+              --mount type=bind,source=/usr/share/zoneinfo/Asia/Tokyo,target=/etc/localtime \
+              --name raspicat-sim \
+              raspicat-sim:humble
     ```
 
 ### シミュレータでROS 2のナビゲーションを学ぶ
