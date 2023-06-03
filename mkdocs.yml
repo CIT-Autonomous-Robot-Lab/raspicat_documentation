@@ -115,20 +115,8 @@ nav:
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
   - Raspberry Pi Cat関連のリポジトリの説明(簡単に): repository/repository_description.md
-- Chat Corner 💬:
-  - News📰 : chat_corner/news.md
-  - 要望: chat_corner/request.md
-  - エラー集/解決策:
-    - Raspberry Pi Cat: chat_corner/error_resolution/raspicat_error_resolution.md
-    - Raspberry Pi Cat（WSL2）: chat_corner/error_resolution/raspicat_error_resolution_wsl2.md
-    - Raspberry Pi Cat V2: chat_corner/error_resolution/raspicat_v2_error_resolution.md
-    - Raspberry Pi Cat V2（WSL2）: chat_corner/error_resolution/raspicat_v2_error_resolution_wsl2.md
-  - メモ(誰でもどうぞw): chat_corner/memo.md
-- Information:
-  - 上田研にある移動ロボット/センサー: information/robot_sensor.md
-  - 動画集: information/raspicat_mp4.md
-- Good Things to Do:
-  - やると良いかも集め: good_things_to_do/good_things_to_do.md
+- Know-how（B3用）:
+  - やると良いかも集め: know_how/know_how.md
 - Study Meeting:
   - Gitを学ぶ回: study_meeting/2022_git_github/git.md
   - GitHubを学ぶ回: study_meeting/2022_git_github/github.md
@@ -139,3 +127,15 @@ nav:
     - 第2回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/2.md
     - 第3回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/3.md
     - 第4回 : study_meeting/2022_detailed_explanation_probabilistic_robotics/4.md
+- Information:
+  - 上田研にある移動ロボット/センサー: information/robot_sensor.md
+  - 動画集: information/raspicat_mp4.md
+- Chat Corner 💬:
+  - News📰 : chat_corner/news.md
+  - 要望: chat_corner/request.md
+  - エラー集/解決策:
+    - Raspberry Pi Cat: chat_corner/error_resolution/raspicat_error_resolution.md
+    - Raspberry Pi Cat（WSL2）: chat_corner/error_resolution/raspicat_error_resolution_wsl2.md
+    - Raspberry Pi Cat V2: chat_corner/error_resolution/raspicat_v2_error_resolution.md
+    - Raspberry Pi Cat V2（WSL2）: chat_corner/error_resolution/raspicat_v2_error_resolution_wsl2.md
+  - メモ(誰でもどうぞw): chat_corner/memo.md
