@@ -9,4 +9,4 @@ else
     :
 fi
 
-docker run -p 8000:8000 --name mkdocs-serve -v $(pwd):/app ghcr.io/uhobeike/mkdocs-serve:latest
+docker run --rm -p 8000:8000 --name mkdocs-serve -v $(pwd):/app ghcr.io/uhobeike/mkdocs-serve:latest
