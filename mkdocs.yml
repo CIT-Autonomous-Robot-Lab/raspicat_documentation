@@ -23,6 +23,7 @@ theme:
     features:
         - navigation.tabs
         - navigation.top
+        - navigation.expand
         - content.code.annotate
         - content.code.copy
         - content.code.select
@@ -83,9 +84,11 @@ nav:
 - Document:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
   
-  - ROS 2:
-    - Raspberry Pi Cat Simulator: document/ros2/raspicat_simulator.md
-    - Raspberry Pi Cat: document/ros2/raspicat.md
+  - Simulator:
+    - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
+  - Real Machine:
+    - Set Up:
+      - Wired: document/real_machine/set_up/wired.md
 
   - ROS:
     - ちょっとだけ面倒くさい環境構築編:
