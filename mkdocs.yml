@@ -59,16 +59,12 @@ extra:
         link: https://twitter.com/BEIKE_RE
 
 markdown_extensions:
-    # !!! を使って文書内に見やすいスタイルを使う（Markdownのサンプルを参照）
     - admonition
-    # [^1] を使って注釈を使う（Markdownのサンプルを参照）
     - footnotes
-    - pymdownx.tabbed:  # タブで文章を切り替えられる
+    - pymdownx.tabbed:
         alternate_style: true
-    - admonition  # Warningとかの飾り付けができる
-    - pymdownx.highlight  # コードブロック用
-    - pymdownx.superfences  # コードブロック用
-    - footnotes  # 注釈用
+    - pymdownx.superfences
+    - footnotes
     - pymdownx.highlight:
         anchor_linenums: true
         line_spans: __span
@@ -88,7 +84,7 @@ nav:
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
     - Set Up:
-      - Wired: document/real_machine/set_up/wired.md
+      - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
 
   - ROS:
     - ちょっとだけ面倒くさい環境構築編:
