@@ -31,7 +31,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     bash <(curl -s https://raw.githubusercontent.com/uhobeike/ros2_humble_install_script/main/ros2_setting.sh)
     ```
 
-    #### 2. ワークスペースの構築
+    ### 2. ワークスペースの構築
 
     * Install apt pkg  
     ```sh
@@ -94,15 +94,13 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     !!! Warning
         **ノートPC**は**Wi-Fi**に接続している必要があります。
 
-    * **ノートPC**と**Raspberry Pi**間をLANケーブルで接続
+    1 . **ノートPC**と**Raspberry Pi**間をLANケーブルで接続
 
     挿入後にそれぞれのLANポートのインジケーターランプが点滅していることを確認しましょう。
 
     [![Image from Gyazo](https://i.gyazo.com/cdbd2cdcffc5ebc7d87ede19a79bb445.gif)](https://gyazo.com/cdbd2cdcffc5ebc7d87ede19a79bb445)
 
-    * ssh接続し、**Raspberry Pi**の中に入る
-
-    1. PC側でEthernetの接続プロファイルを作成します  
+    2 . PC側でEthernetの接続プロファイルを作成します  
     `PROFILE-NAME`は任意の名前、`NIC-NAME`は`ip`コマンド等で調べたEthernetのインターフェイス名です。
     
     * net-toolsのインストール
@@ -116,18 +114,20 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     export PROFILE_NAME=raspicat
     nmcli connection add type ethernet con-name $PROFILE_NAME ifname $ET_NIC_NAME ipv4.method shared
     ```
-    2. プロファイルを作成後、プロファイルの適用を行います  
+    
+    3 . プロファイルを作成後、プロファイルの適用を行います  
     `PROFILE-NAME`には、作成したプロファイル名を入れます。
     
     ```sh
     nmcli con up $PROFILE_NAME ifname $ET_NIC_NAME
     ```
-    3. `$ ip a`で有線LAN接続ができているか確認します  
+
+    4 . `ip a`で有線LAN接続ができているか確認します  
 
     enp0s31f6のIPアドレスが10.42.0.1になっていれば問題ないです。
 
     ```sh hl_lines="10"
-    ikebe@ikebe:~(21:32:47)$ ip a
+    ikebe@ikebe:~$ ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
         link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
         inet 127.0.0.1/8 scope host lo
@@ -147,7 +147,8 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         inet6 fe80::5c7a:7a80:7622:ed41/64 scope link noprefixroute 
           valid_lft forever preferred_lft forever
     ```
-    4. Raspberry Piにssh接続  
+    
+    5 . Raspberry Piにssh接続  
     Raspberry PiのIPアドレスを調べるために`arp-scan`コマンドを使用します。
     ```sh
     sudo apt install arp-scan
@@ -159,10 +160,10 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     ssh ubuntu@$Raspberry_Pi_IP
     ```
 
-    ・接続すると**yes**か**no**かを求められます  
+    * 接続すると**yes**か**no**かを求められます  
     yesを選択しましょう。
 
-    ・次にパスワードを求められます  
+    * 次にパスワードを求められます  
     デフォルトのパスワードは`ubuntu`です。
     
     なので以下のように入力を求められたら、`ubuntu`と打ちましょう。
@@ -170,9 +171,10 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     ubuntu@10.42.0.13's password: 
     ```
 
-    ・今度はパスワードの変更を求められます
+    * 今度はパスワードの変更を求められます
 
-    以下のように入力を求められたら、現在のパスワードを聞かれているので`ubuntu`と入力します。
+    以下のように入力を求められたら、  
+    現在のパスワードを聞かれているので`ubuntu`と入力します。
     ```sh
     Current password:
     ```
@@ -185,7 +187,8 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     Connection to 10.42.0.13 closed.
     ```
     **接続が閉じられるので再度sshをする必要があります。**  
-    5. ssh接続ができたら、Raspberry PiがPCのネットワークを利用できているか確認します  
+    
+    6 . ssh接続ができたら、Raspberry PiがPCのネットワークを利用できているか確認します  
     ```sh
     ping '8.8.8.8'
     ```
@@ -214,3 +217,52 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
         sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
         ```
+    
+    ### 5. aptパッケージのアップグレード
+    焼いたばかりのイメージの中のaptパッケージは最新ではないです。  
+    最新にしましょう。
+
+    * 正常にインストールするには時刻を正しくしておく必要があります
+    おそらく`date`コマンドを打つと現在の時刻ではないと思われます。  
+    そのため、`date`コマンドで修正しましょう。  
+    以下のコマンドは修正例です。
+
+    ```sh
+    sudo date -s "2023/6/24 22:54:53"
+    ```
+
+    時刻を修正できたのでアップグレード開始
+
+    ```sh
+    sudo apt update
+    sudo apt upgrade
+    ```
+
+    ### 6. ROS 2のインストール
+
+    ```sh
+    bash <(curl -s https://raw.githubusercontent.com/uhobeike/ros2_humble_install_script/main/install_server.sh)
+    source $HOME/.bashrc
+    ```
+
+    ### 7. ワークスペースの構築
+
+    * Install apt pkg  
+    ```sh
+    sudo apt install git python3-vcstool
+    ```
+
+    * 学校で初めてsshで`git clone`する場合は以下を実行してください
+    ```sh
+    curl -s https://raw.githubusercontent.com/uhobeike/ssh_config_cit/master/config >> ~/.ssh/config
+    ```
+
+    * Set Up Workspace（[GitHubでの鍵の登録が済んでいる前提](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)）
+    ```sh
+    git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git
+    cd raspicat2 && mkdir src
+    vcs import src < raspicat-raspi.repos --debug
+    rosdep update
+    rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+    colcon build --symlink-install
+    ```
