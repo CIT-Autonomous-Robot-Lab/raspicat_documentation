@@ -91,6 +91,9 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     **ノートPC**と**Raspberry Pi**間をLANケーブルで接続し、**ノートPC**から**Raspberry Pi**へssh接続を行います。
 
+    !!! Warning
+        **ノートPC**は**Wi-Fi**に接続している必要があります。
+
     * **ノートPC**と**Raspberry Pi**間をLANケーブルで接続
 
     挿入後にそれぞれのLANポートのインジケーターランプが点滅していることを確認しましょう。
@@ -99,4 +102,115 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * ssh接続し、**Raspberry Pi**の中に入る
 
+    1. PC側でEthernetの接続プロファイルを作成します  
+    `PROFILE-NAME`は任意の名前、`NIC-NAME`は`ip`コマンド等で調べたEthernetのインターフェイス名です。
     
+    * net-toolsのインストール
+
+    ```sh
+    sudo apt install net-tools
+    ```
+
+    ```sh
+    export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^enp/ {print $2}')
+    export PROFILE_NAME=raspicat
+    nmcli connection add type ethernet con-name $PROFILE_NAME ifname $ET_NIC_NAME ipv4.method shared
+    ```
+    2. プロファイルを作成後、プロファイルの適用を行います  
+    `PROFILE-NAME`には、作成したプロファイル名を入れます。
+    
+    ```sh
+    nmcli con up $PROFILE_NAME ifname $ET_NIC_NAME
+    ```
+    3. `$ ip a`で有線LAN接続ができているか確認します  
+
+    enp0s31f6のIPアドレスが10.42.0.1になっていれば問題ないです。
+
+    ```sh hl_lines="10"
+    ikebe@ikebe:~(21:32:47)$ ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+          valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host 
+          valid_lft forever preferred_lft forever
+    2: enp0s31f6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+        link/ether f8:75:a4:a9:0a:49 brd ff:ff:ff:ff:ff:ff
+        inet 10.42.0.1/24 brd 10.42.0.255 scope global noprefixroute enp0s31f6
+          valid_lft forever preferred_lft forever
+        inet6 fe80::ec73:35a8:7a39:dcfc/64 scope link noprefixroute 
+          valid_lft forever preferred_lft forever
+    3: wlp0s20f3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+        link/ether 80:32:53:62:73:c5 brd ff:ff:ff:ff:ff:ff
+        inet 192.168.23.232/24 brd 192.168.23.255 scope global dynamic noprefixroute wlp0s20f3
+          valid_lft 84272sec preferred_lft 84272sec
+        inet6 fe80::5c7a:7a80:7622:ed41/64 scope link noprefixroute 
+          valid_lft forever preferred_lft forever
+    ```
+    4. Raspberry Piにssh接続  
+    Raspberry PiのIPアドレスを調べるために`arp-scan`コマンドを使用します。
+    ```sh
+    sudo apt install arp-scan
+    sudo arp-scan -l -I $ET_NIC_NAME
+    ```
+    Raspberry PiのIPアドレスを調べ、そのIPを使用しssh接続を行います。  
+    ```sh
+    export Raspberry_Pi_IP=$(sudo arp-scan -l | awk 'NR==3{print $1}')
+    ssh ubuntu@$Raspberry_Pi_IP
+    ```
+
+    ・接続すると**yes**か**no**かを求められます  
+    yesを選択しましょう。
+
+    ・次にパスワードを求められます  
+    デフォルトのパスワードは`ubuntu`です。
+    
+    なので以下のように入力を求められたら、`ubuntu`と打ちましょう。
+    ```sh
+    ubuntu@10.42.0.13's password: 
+    ```
+
+    ・今度はパスワードの変更を求められます
+
+    以下のように入力を求められたら、現在のパスワードを聞かれているので`ubuntu`と入力します。
+    ```sh
+    Current password:
+    ```
+
+    次の入力では、設定したい自分が考えたパスワードを打ち込みます。
+
+    パスワードをうまく設定できたら、以下のように出力されます。
+    ```sh
+    passwd: password updated successfully
+    Connection to 10.42.0.13 closed.
+    ```
+    **接続が閉じられるので再度sshをする必要があります。**  
+    5. ssh接続ができたら、Raspberry PiがPCのネットワークを利用できているか確認します  
+    ```sh
+    ping '8.8.8.8'
+    ```
+
+    !!! info 
+        実行後の正常な出力結果は以下のとおりです。  
+        ```sh hl_lines="2 3 4"
+        $ ping '8.8.8.8'
+        PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+        64 bytes from 8.8.8.8: icmp_seq=1 ttl=110 time=91.2 ms
+        64 bytes from 8.8.8.8: icmp_seq=2 ttl=110 time=38.5 ms
+                            （以下省略）
+        ```
+
+    !!! Warning
+        **ノートPC**が**Wi-Fi**に接続されている状態で、下記のように結果が何も返ってこない場合は  
+        ```sh hl_lines="2"
+        $ ping '8.8.8.8'
+        PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+        ```
+        **ノートPC**上で下記のコマンドを実行してください。
+        ```sh 
+        export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^enp/ {print $2}')
+        export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wlp/ {print $2}')
+        sudo iptables -t nat -A POSTROUTING -o $WL_NIC_NAME -j MASQUERADE
+        sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+        sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
+        ```
