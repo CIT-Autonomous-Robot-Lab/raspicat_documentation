@@ -48,6 +48,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git $HOME/raspicat2
     grep -q "source $HOME/raspicat2/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat2/install/setup.bash" >> ~/.bashrc
     grep -q "export RASPICAT2_WS=$HOME/raspicat2" ~/.bashrc || echo "export RASPICAT2_WS=$HOME/raspicat2" >> ~/.bashrc
+    source $HOME/.bashrc
     cd $RASPICAT2_WS && mkdir src
     vcs import src < raspicat-pc.repos --debug
     rosdep update
