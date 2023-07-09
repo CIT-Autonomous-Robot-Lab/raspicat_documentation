@@ -109,7 +109,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     * net-toolsのインストール
 
     ```sh
-    sudo apt install net-tools
+    sudo apt install network-manager
     ```
 
     ```sh
@@ -221,7 +221,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
         ```
     
-    ### 5. aptパッケージのアップグレード
+    ### 4. aptパッケージのアップグレード
     焼いたばかりのイメージの中のaptパッケージは最新ではないです。  
     最新にしましょう。
 
@@ -241,14 +241,14 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     sudo apt upgrade
     ```
 
-    ### 6. ROS 2のインストール
+    ### 5. ROS 2のインストール
 
     ```sh
     bash <(curl -s https://raw.githubusercontent.com/uhobeike/ros2_humble_install_script/main/install_server.sh)
     source $HOME/.bashrc
     ```
 
-    ### 7. ワークスペースの構築
+    ### 6. ワークスペースの構築
 
     * Install apt pkg  
     ```sh
@@ -273,7 +273,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     source $HOME/.bashrc
     ```
 
-    ### 8. デバイスドライバのインストール
+    ### 7. デバイスドライバのインストール
 
     Raspberry Pi CatをROS 2で制御するには、デバイスドライバのインストールが必要です。
     
@@ -281,6 +281,6 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
 
     ```sh
-    cd $RASPICAT2_WS
-    ./src/raspicat_setup_scripts/device_driver_auto_install/scripts/install.sh
+    colcon_cd raspicat_setup_scripts
+    ./device_driver_auto_install/scripts/install.sh
     ```
