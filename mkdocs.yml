@@ -84,36 +84,10 @@ nav:
   - Simulator:
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
+    # - Basic Operation: 
+    #   - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Set Up:
       - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
-
-  - ROS:
-    - ちょっとだけ面倒くさい環境構築編:
-      - Raspberry Pi Cat: document/ros/environment/Raspberry Pi Cat/environment.md
-      - Raspberry Pi Cat V2: document/ros/environment/Raspberry Pi Cat V2/environment.md
-      - Wireless(Raspberry Pi 4B): document/ros/environment/wireless/wireless_raspi4.md
-
-    - 動かしてみよう編:
-      - Mapping:
-        - Raspberry Pi Cat:
-          - Raspberry Pi 3B+ & PCでマッピング: document/ros/lets_move/mapping/Raspberry Pi Cat/raspi3_pc_mapping.md
-          - PC(rosbag)でマッピング: document/ros/lets_move/mapping/Raspberry Pi Cat/pc_rosbag_mapping.md 
-        - Raspberry Pi Cat V2:
-          - Raspberry Pi 4Bのみでマッピング: document/ros/lets_move/mapping/Raspberry Pi Cat V2/raspi4_only_mapping.md
-
-      - Navigation:
-        - Raspberry Pi Cat:
-          - Raspberry Pi 3B+ & PCでナビゲーション: document/ros/lets_move/navigation/Raspberry Pi Cat/raspi3_pc_navigation.md
-          - Raspberry Pi 3B+のみでナビゲーション: document/ros/lets_move/navigation/Raspberry Pi Cat/raspi3_only_navigation.md
-        - Raspberry Pi Cat V2:
-          - Raspberry Pi 4Bのみでナビゲーション: document/ros/lets_move/navigation/Raspberry Pi Cat V2/raspi4_only_navigation.md
-
-      - Waypoint Navigation:
-        - Raspberry Pi Cat:
-          - Raspberry Pi 3B+ & PCでナビゲーション: document/ros/lets_move/waypoint_navigation/Raspberry Pi Cat/raspi3_pc_waypoint_navigation.md
-          - Raspberry Pi 3B+のみでナビゲーション: document/ros/lets_move/waypoint_navigation/Raspberry Pi Cat/raspi3_only_waypoint_navigation.md
-        - Raspberry Pi Cat V2:
-          - Raspberry Pi 4Bのみでナビゲーション: document/ros/lets_move/waypoint_navigation/Raspberry Pi Cat V2/raspi4_only_waypoint_navigation.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
