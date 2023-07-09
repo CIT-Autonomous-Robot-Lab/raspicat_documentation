@@ -7,13 +7,13 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 | Software         | Version                                      |
 | ---------------- | -------------------------------------------- | 
 | ノートPC         | Ubuntu 22.04（ROS 2 Humble) |
-| Raspberry Pi 3B+ | Ubuntu 22.04（ROS 2 Humble) |
+| Raspberry Pi Cat（Raspberry Pi 4B+） | Ubuntu 22.04（ROS 2 Humble) |
 
 | Hardware            |                  | 
 | ------------------- | ---------------- | 
-| ノートPC            | Raspberry Pi 4B+ | 
-| Raspberry Pi Cat    | microSDカード（32GB以上が好ましい）       | 
-| LANケーブル         | Joystick Controller  | 
+| ノートPC            | Raspberry Pi Cat（Raspberry Pi 4B+） | 
+|   Joystick Controller  | microSDカード（32GB以上が好ましい）       | 
+| LANケーブル         |   | 
 
 ## 環境構築手順
 
@@ -45,12 +45,15 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Set Up Workspace（[GitHubでの鍵の登録が済んでいる前提](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)）
     ```sh
-    git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git
-    cd raspicat2 && mkdir src
+    git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git $HOME/raspicat2
+    grep -q "source $HOME/raspicat2/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat2/install/setup.bash" >> ~/.bashrc
+    grep -q "export RASPICAT2_WS=$HOME/raspicat2" ~/.bashrc || echo "export RASPICAT2_WS=$HOME/raspicat2" >> ~/.bashrc
+    cd $RASPICAT2_WS && mkdir src
     vcs import src < raspicat-pc.repos --debug
     rosdep update
     rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
     colcon build --symlink-install
+    source $HOME/.bashrc
     ```
 
 === "Raspberry Pi"
@@ -259,10 +262,25 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Set Up Workspace（[GitHubでの鍵の登録が済んでいる前提](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)）
     ```sh
-    git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git
-    cd raspicat2 && mkdir src
+    git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git $HOME/raspicat2
+    grep -q "source $HOME/raspicat2/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat2/install/setup.bash" >> ~/.bashrc
+    grep -q "export RASPICAT2_WS=$HOME/raspicat2" ~/.bashrc || echo "export RASPICAT2_WS=$HOME/raspicat2" >> ~/.bashrc
+    cd $RASPICAT2_WS && mkdir src
     vcs import src < raspicat-raspi.repos --debug
     rosdep update
     rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
     colcon build --symlink-install
+    source $HOME/.bashrc
+    ```
+
+    ### 8. デバイスドライバのインストール
+
+    Raspberry Pi CatをROS 2で制御するには、デバイスドライバのインストールが必要です。
+    
+    !!! info
+        デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
+
+    ```sh
+    cd $RASPICAT2_WS
+    ./src/raspicat_setup_scripts/device_driver_auto_install/scripts/install.sh
     ```
