@@ -35,7 +35,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install git python3-vcstool
+    sudo apt install -y git python3-vcstool
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
@@ -69,7 +69,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * rpi-imagerのインストール
     ```sh
-    sudo apt install rpi-imager
+    sudo apt install -y rpi-imager
     ```
 
     下記のコマンドを実行して`rpi-imager`を立ち上げましょう。  
@@ -107,10 +107,10 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     2 . PC側でEthernetの接続プロファイルを作成します  
     `PROFILE-NAME`は任意の名前、`NIC-NAME`は`ip`コマンド等で調べたEthernetのインターフェイス名です。
     
-    * net-toolsのインストール
+    * network-managerのインストール
 
     ```sh
-    sudo apt install network-manager
+    sudo apt install -y network-manager
     ```
 
     ```sh
@@ -155,7 +155,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     5 . Raspberry Piにssh接続  
     Raspberry PiのIPアドレスを調べるために`arp-scan`コマンドを使用します。
     ```sh
-    sudo apt install arp-scan
+    sudo apt install -y arp-scan
     sudo arp-scan -l -I $ET_NIC_NAME
     ```
     Raspberry PiのIPアドレスを調べ、そのIPを使用しssh接続を行います。  
@@ -215,8 +215,8 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         ```
         **ノートPC**上で下記のコマンドを実行してください。
         ```sh 
-        export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^enp/ {print $2}')
-        export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wlp/ {print $2}')
+        export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[ops]/ {print $2}')
+        export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wl[ops]/ {print $2}')
         sudo iptables -t nat -A POSTROUTING -o $WL_NIC_NAME -j MASQUERADE
         sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
         sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
@@ -253,7 +253,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install git python3-vcstool
+    sudo apt install -y git python3-vcstool
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
