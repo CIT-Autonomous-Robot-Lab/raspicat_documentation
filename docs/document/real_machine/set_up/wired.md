@@ -35,7 +35,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install -y git python3-vcstool
+    sudo apt install -y git python3-vcstool xterm
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
@@ -114,7 +114,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     sudo apt install -y network-manager
     ```
     ```sh
-    export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^enp/ {print $2}')
+    export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[opsx]/ {print $2}')
     export PROFILE_NAME=raspicat
     nmcli connection add type ethernet con-name $PROFILE_NAME ifname $ET_NIC_NAME ipv4.method shared
     ```
@@ -129,7 +129,8 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     4 . `ip a`で有線LAN接続ができているか確認します  
     
     * 有線LAN接続の確認  
-    enp0s31f6のIPアドレスが10.42.0.1になっていれば問題ないです。
+    **enp0s31f6**のIPアドレスが`10.42.0.1`になっていれば問題ないです。  
+    人によっては、**eno**、**enp**、**ens**、**enx**になっています。（[命名規則について](https://www.thomas-krenn.com/en/wiki/Predictable_Network_Interface_Names)）
     ```sh hl_lines="10"
     ikebe@ikebe:~$ ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -162,7 +163,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     * ssh接続  
     Raspberry PiのIPアドレスを調べ、そのIPを使用しssh接続を行います。  
     ```sh
-    export Raspberry_Pi_IP=$(sudo arp-scan -l | awk 'NR==3{print $1}')
+    export Raspberry_Pi_IP=$(sudo arp-scan -l -I $ET_NIC_NAME | awk 'NR==3{print $1}')
     ssh ubuntu@$Raspberry_Pi_IP
     ```
 
@@ -218,10 +219,12 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         $ ping '8.8.8.8'
         PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
         ```
-        **ノートPC**上で下記のコマンドを実行してください。
+  
+        <span style="font-size: 200%; color: red;">↓**ノートPC上**で下記のコマンドを実行してください↓</span>
+        
         ```sh 
-        export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[ops]/ {print $2}')
-        export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wl[ops]/ {print $2}')
+        export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[opsx]/ {print $2}')
+        export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wl[opsx]/ {print $2}')
         sudo iptables -t nat -A POSTROUTING -o $WL_NIC_NAME -j MASQUERADE
         sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
         sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
@@ -241,8 +244,13 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     正常にaptパッケージの更新をするには、時刻を正しくする必要があります。  
     `date`コマンドを打つと、現在の時刻ではないことが分かります。  
     ```sh
-    colcon_cd raspicat_setup_scripts
-    ./time_synchronization/scripts/setup_raspi.sh
+    wget -O /tmp/setup_raspi.sh --no-check-certificate https://raw.githubusercontent.com/CIT-Autonomous-Robot-Lab/raspicat_setup_scripts/ros2/time_synchronization/scripts/setup_raspi.sh
+    chmod +x /tmp/setup_raspi.sh
+    . /tmp/setup_raspi.sh
+    ```
+    <span style="font-size: 150%; color: red;">↓**ノートPC上**で下記のコマンドを実行してください↓</span>
+    ```sh
+    sudo systemctl restart chrony.service
     ```
     !!! info 
         上記のコマンドでは、ノートPC（サーバ）の時間が合っているものとしています。    
@@ -273,7 +281,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install -y git python3-vcstool
+    sudo apt install -y build-essential git python3-vcstool
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
