@@ -35,7 +35,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install git python3-vcstool
+    sudo apt install -y git python3-vcstool
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
@@ -69,7 +69,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * rpi-imagerのインストール
     ```sh
-    sudo apt install rpi-imager
+    sudo apt install -y rpi-imager
     ```
 
     下記のコマンドを実行して`rpi-imager`を立ち上げましょう。  
@@ -110,7 +110,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     * network-managerのインストール
 
     ```sh
-    sudo apt install network-manager
+    sudo apt install -y network-manager
     ```
 
     ```sh
@@ -155,7 +155,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     5 . Raspberry Piにssh接続  
     Raspberry PiのIPアドレスを調べるために`arp-scan`コマンドを使用します。
     ```sh
-    sudo apt install arp-scan
+    sudo apt install -y arp-scan
     sudo arp-scan -l -I $ET_NIC_NAME
     ```
     Raspberry PiのIPアドレスを調べ、そのIPを使用しssh接続を行います。  
@@ -253,7 +253,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     * Install apt pkg  
     ```sh
-    sudo apt install git python3-vcstool
+    sudo apt install -y git python3-vcstool
     ```
 
     * 学校で初めてsshで`git clone`する場合は以下を実行してください
