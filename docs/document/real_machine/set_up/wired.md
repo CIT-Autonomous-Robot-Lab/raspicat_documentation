@@ -57,38 +57,42 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     source $HOME/.bashrc
     ```
 
+    ### 3. 時刻同期のための設定
+
+    * Run script
+    ```sh
+    colcon_cd raspicat_setup_scripts
+    ./time_synchronization/scripts/setup_remote_pc.sh
+    ```
+
 === "Raspberry Pi"
 
-    ### 1. microSDカードにUbuntuのイメージを焼く
+    ### 1. microSDカードにUbuntuのイメージを焼く  
 
-    [Ubuntu 22.04 LTSのリリースページ](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/)から**Ubuntu 22.04 server**のイメージファイル（`ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz`）をダウンロードします。
-
-    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.2-preinstalled-server-armhf+raspi.img.xz){ .md-button .md-button--primary }
-
+    * イメージのダウンロード  
+    [Ubuntu 22.04 LTSのリリースページ](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/)から**Ubuntu 22.04 server**のイメージファイル  
+    （`ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz`）をダウンロードします。  
+    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.2-preinstalled-server-armhf+raspi.img.xz){ .md-button .md-button--primary }  
     ダウンロードしたイメージは[rpi-imager](https://www.raspberrypi.com/software/)等でSDカードに書き込みます。
 
     * rpi-imagerのインストール
     ```sh
     sudo apt install -y rpi-imager
     ```
-
     下記のコマンドを実行して`rpi-imager`を立ち上げましょう。  
     以下のようにwindowが立ち上がると思います。
     ```sh
     rpi-imager
     ```
-    
     [![Image from Gyazo](https://i.gyazo.com/88d0843765391ee6299dd38936db8303.png)](https://gyazo.com/88d0843765391ee6299dd38936db8303)
-
     **ダウンロードしたイメージ**と**microSDカード**を選択し  
     以下のようにmicroSDカードに書き込みましょう。
-
     [![Image from Gyazo](https://i.gyazo.com/9157c716a1debe037a04fc3336bc695a.png)](https://gyazo.com/9157c716a1debe037a04fc3336bc695a)
 
     ### 2. 焼いたmicroSDカードをRaspberry Piに挿してRaspberry Pi Catを起動
 
+    * Raspberry Pi Catの起動  
     焼いたmicroSDカードをRaspberry Piに挿して、Raspberry Pi Catの電源を入れましょう。
-
     [![Image from Gyazo](https://i.gyazo.com/773838cb53079f918e3bcc0b457f297d.gif)](https://gyazo.com/773838cb53079f918e3bcc0b457f297d)
 
     ### 3. 有線LANを使用し、ノートPCのネットワークを利用する
@@ -98,21 +102,17 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     !!! Warning
         **ノートPC**は**Wi-Fi**に接続している必要があります。
 
-    1 . **ノートPC**と**Raspberry Pi**間をLANケーブルで接続
-
+    1 . **ノートPC**と**Raspberry Pi**間をLANケーブルで接続  
     挿入後にそれぞれのLANポートのインジケーターランプが点滅していることを確認しましょう。
 
     [![Image from Gyazo](https://i.gyazo.com/cdbd2cdcffc5ebc7d87ede19a79bb445.gif)](https://gyazo.com/cdbd2cdcffc5ebc7d87ede19a79bb445)
 
     2 . PC側でEthernetの接続プロファイルを作成します  
-    `PROFILE-NAME`は任意の名前、`NIC-NAME`は`ip`コマンド等で調べたEthernetのインターフェイス名です。
     
-    * network-managerのインストール
-
+    * network-managerのインストール  
     ```sh
     sudo apt install -y network-manager
     ```
-
     ```sh
     export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^enp/ {print $2}')
     export PROFILE_NAME=raspicat
@@ -120,16 +120,16 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     ```
     
     3 . プロファイルを作成後、プロファイルの適用を行います  
-    `PROFILE-NAME`には、作成したプロファイル名を入れます。
-    
+
+    * プロファイルの適用  
     ```sh
     nmcli con up $PROFILE_NAME ifname $ET_NIC_NAME
     ```
 
     4 . `ip a`で有線LAN接続ができているか確認します  
-
+    
+    * 有線LAN接続の確認  
     enp0s31f6のIPアドレスが10.42.0.1になっていれば問題ないです。
-
     ```sh hl_lines="10"
     ikebe@ikebe:~$ ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -153,11 +153,13 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     ```
     
     5 . Raspberry Piにssh接続  
+
+    * arp-scanのインストール  
     Raspberry PiのIPアドレスを調べるために`arp-scan`コマンドを使用します。
     ```sh
     sudo apt install -y arp-scan
-    sudo arp-scan -l -I $ET_NIC_NAME
     ```
+    * ssh接続  
     Raspberry PiのIPアドレスを調べ、そのIPを使用しssh接続を行います。  
     ```sh
     export Raspberry_Pi_IP=$(sudo arp-scan -l | awk 'NR==3{print $1}')
@@ -168,31 +170,34 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     yesを選択しましょう。
 
     * 次にパスワードを求められます  
-    デフォルトのパスワードは`ubuntu`です。
-    
-    なので以下のように入力を求められたら、`ubuntu`と打ちましょう。
+    デフォルトのパスワードは`ubuntu`です。  
+    そのため、以下のように入力を求められたら、`ubuntu`と打ちましょう。
     ```sh
     ubuntu@10.42.0.13's password: 
     ```
 
-    * 今度はパスワードの変更を求められます
-
+    * 今度はパスワードの変更を求められます  
     以下のように入力を求められたら、  
     現在のパスワードを聞かれているので`ubuntu`と入力します。
     ```sh
     Current password:
     ```
-
-    次の入力では、設定したい自分が考えたパスワードを打ち込みます。
-
+    次の入力では、設定したい自分が考えたパスワードを打ち込みます。  
     パスワードをうまく設定できたら、以下のように出力されます。
     ```sh
     passwd: password updated successfully
     Connection to 10.42.0.13 closed.
     ```
-    **接続が閉じられるので再度sshをする必要があります。**  
     
-    6 . ssh接続ができたら、Raspberry PiがPCのネットワークを利用できているか確認します  
+    * パスワード無しでssh接続  
+    ```sh
+    ssh-copy-id ubuntu@$Raspberry_Pi_IP
+    ssh ubuntu@$Raspberry_Pi_IP
+    ```
+
+    6 . ssh接続ができたら、**Raspberry Pi**がPCのネットワークを利用できているか確認します  
+    
+    * ネットワークへの接続確認（**Raspberry Pi**）
     ```sh
     ping '8.8.8.8'
     ```
@@ -223,27 +228,42 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
         ```
     
     ### 4. aptパッケージのアップグレード
-    焼いたばかりのイメージの中のaptパッケージは最新ではないです。  
-    最新にしましょう。
 
-    * 正常にインストールするには時刻を正しくしておく必要があります
-    おそらく`date`コマンドを打つと現在の時刻ではないと思われます。  
-    そのため、`date`コマンドで修正しましょう。  
-    以下のコマンドは修正例です。
-
+    * aptパッケージの自動更新をオフにする  
+    aptパッケージを更新する際に、自動更新のプロセスが邪魔をしてくるので、オフにしましょう。
     ```sh
-    sudo date -s "2023/6/24 22:54:53"
+    sudo systemctl stop unattended-upgrades
+    sudo apt purge unattended-upgrades
+    sudo pkill --signal SIGKILL unattended-upgrades
     ```
 
-    時刻を修正できたのでアップグレード開始
-
+    * aptパッケージの更新（時刻同期）  
+    正常にaptパッケージの更新をするには、時刻を正しくする必要があります。  
+    `date`コマンドを打つと、現在の時刻ではないことが分かります。  
     ```sh
-    sudo apt update
-    sudo apt upgrade
+    colcon_cd raspicat_setup_scripts
+    ./time_synchronization/scripts/setup_raspi.sh
+    ```
+    !!! info 
+        上記のコマンドでは、ノートPC（サーバ）の時間が合っているものとしています。    
+        その上で、Raspberry Pi（クライアント）は、ノートPCの時刻を参照し、時刻の更新をします。
+    * aptパッケージの更新  
+    ```sh
+    sudo apt update -y
+    sudo apt upgrade -y
+    ```
+    ここで一旦、Raspberry Piの**再起動**を行います。
+    ```sh
+    sudo reboot
+    ```
+    20秒程経ったら、再度ssh接続を行いましょう。
+    ```sh
+    ssh ubuntu@$Raspberry_Pi_IP
     ```
 
     ### 5. ROS 2のインストール
 
+    * Install ROS 2
     ```sh
     bash <(curl -s https://raw.githubusercontent.com/uhobeike/ros2_humble_install_script/main/install_server.sh)
     source $HOME/.bashrc
@@ -277,11 +297,12 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     ### 7. デバイスドライバのインストール
 
     Raspberry Pi CatをROS 2で制御するには、デバイスドライバのインストールが必要です。
-    
-    !!! info
-        デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
 
+    * Install Device Driver
     ```sh
     colcon_cd raspicat_setup_scripts
     ./device_driver_auto_install/scripts/install.sh
     ```
+
+    !!! info
+        デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
