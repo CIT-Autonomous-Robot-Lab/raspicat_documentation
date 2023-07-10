@@ -107,7 +107,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     2 . PC側でEthernetの接続プロファイルを作成します  
     `PROFILE-NAME`は任意の名前、`NIC-NAME`は`ip`コマンド等で調べたEthernetのインターフェイス名です。
     
-    * net-toolsのインストール
+    * network-managerのインストール
 
     ```sh
     sudo apt install network-manager
