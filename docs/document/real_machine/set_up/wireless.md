@@ -19,11 +19,9 @@ Raspberry Pi Catに無線経由でssh接続するまでの方法について説�
 
 * Raspberry Piでホットスポットを立ち上げる  
 `<your-name>`の部分は変更しましょう。
-
 ```sh
 export HOTSPOT_SSID=raspicat-<your-name>
 ```
-
 ```sh
 grep -q "export HOTSPOT_SSID_NAME=$HOTSPOT_SSID" ~/.bashrc || echo "export HOTSPOT_SSID_NAME=$HOTSPOT_SSID" >> ~/.bashrc
 colcon_cd raspicat_setup_scripts
@@ -44,7 +42,6 @@ Raspberry Piで立ち上げたホットスポットのSSIDを選択し、ネッ�
 現在、ノートPCがアクセスしているネットワークは、Raspberry Pi側で立ち上げたものです。  
 そのため、Raspberry Pi側のIPアドレスは、`192.168.12.1`です。  
 このIPアドレスは変わりません。
-
 ```sh
 ssh ubuntu@192.168.12.1
 ```
