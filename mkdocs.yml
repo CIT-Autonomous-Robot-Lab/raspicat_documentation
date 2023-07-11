@@ -91,6 +91,8 @@ nav:
       - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Time Synchronization: 
       - 時刻同期: document/real_machine/time_synchronization/time_synchronization.md
+    - Mapping: 
+      - 地図作成: document/real_machine/mapping/mapping.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
