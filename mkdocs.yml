@@ -84,11 +84,13 @@ nav:
   - Simulator:
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
-    - Basic Operation: 
-      - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Set Up:
       - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
       - 無線LAN（Wi-Fi）: document/real_machine/set_up/wireless.md
+    - Basic Operation: 
+      - 基本操作: document/real_machine/basic_operation/basic_operation.md
+    - Time Synchronization: 
+      - 時刻同期: document/real_machine/time_synchronization/time_synchronization.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
