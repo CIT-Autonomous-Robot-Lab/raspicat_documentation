@@ -25,6 +25,7 @@
     * 外部からのファイルをダウンロード時（Raspberry Piで実行）
     * パッケージのビルド時（Raspberry Piで実行）
     * tfを使用したプログラム実行時（どちらでも）
+        * マッピングやナビゲーションなど
 
 * 時刻同期の方法（[Set Up/有線LAN（Ethernet）](../set_up/wired.md)で設定が、済んでいる前提）  
 <span style="font-size: 150%; color: red;">↓**ノートPC上**で下記のコマンドを実行してください↓</span>
