@@ -21,7 +21,7 @@ GUIが使えないので、ジョイスティックコントローラのみで�
 
 === "ジョイスティックコントローラ"
     ```sh
-    ros2 launch raspicat_bringup raspicat.launch.py
+    ros2 launch raspicat raspicat.launch.py
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
     ```
@@ -30,14 +30,14 @@ GUIが使えないので、ジョイスティックコントローラのみで�
 
 === "キーボード"
     ```sh
-    ros2 launch raspicat_bringup raspicat.launch.py
+    ros2 launch raspicat raspicat.launch.py
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_bringup teleop.launch.py teleop:=key
     ```
 
 === "ジョイスティックコントローラ"
     ```sh
-    ros2 launch raspicat_bringup raspicat.launch.py
+    ros2 launch raspicat raspicat.launch.py
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
     ```
