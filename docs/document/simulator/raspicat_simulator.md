@@ -74,6 +74,7 @@ xhost +local:docker
               --net=host \
               --ipc=host \
               --env="DISPLAY=$DISPLAY" \
+              --mount type=bind,source=/dev,target=/dev \
               --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh \
               --mount type=bind,source=/home/$USER/.gitconfig,target=/home/$USER/.gitconfig \
               --mount type=bind,source=/usr/share/zoneinfo/Asia/Tokyo,target=/etc/localtime \
@@ -90,9 +91,11 @@ xhost +local:docker
               --net=host \
               --ipc=host \
               --env="DISPLAY=$DISPLAY" \
+              --mount type=bind,source=/dev,target=/dev \
               --mount type=bind,source=/home/$USER/.ssh,target=/home/$USER/.ssh \
               --mount type=bind,source=/home/$USER/.gitconfig,target=/home/$USER/.gitconfig \
               --mount type=bind,source=/usr/share/zoneinfo/Asia/Tokyo,target=/etc/localtime \
+
               --name raspicat-sim \
               raspicat-sim:humble
     ```
