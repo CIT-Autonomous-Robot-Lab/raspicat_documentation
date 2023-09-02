@@ -94,6 +94,8 @@ nav:
       - 時刻同期: document/real_machine/time_synchronization/time_synchronization.md
     - Mapping: 
       - 地図作成: document/real_machine/mapping/mapping.md
+    - Navigation:
+      - ナビゲーション: document/real_machine/navigation/navigation.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
