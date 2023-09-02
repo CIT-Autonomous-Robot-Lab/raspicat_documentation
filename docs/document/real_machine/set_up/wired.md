@@ -89,6 +89,10 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     以下のようにmicroSDカードに書き込みましょう。
     [![Image from Gyazo](https://i.gyazo.com/9157c716a1debe037a04fc3336bc695a.png)](https://gyazo.com/9157c716a1debe037a04fc3336bc695a)
 
+    !!! Warning
+        「詳細な設定」はすべてオフにしてください。
+        ここで「ホスト名」や「ユーザ名」を設定すると、この後デバイスドライバをインストールする際にエラーが発生します。
+
     ### 2. 焼いたmicroSDカードをRaspberry Piに挿してRaspberry Pi Catを起動
 
     * Raspberry Pi Catの起動  
