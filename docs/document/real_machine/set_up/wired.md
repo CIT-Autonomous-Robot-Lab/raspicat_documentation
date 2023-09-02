@@ -72,7 +72,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     * イメージのダウンロード  
     [Ubuntu 22.04 LTSのリリースページ](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/)から**Ubuntu 22.04 server**のイメージファイル  
     （`ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz`）をダウンロードします。  
-    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.3-preinstalled-server-arm64+raspi.img.xz)
+    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.3-preinstalled-server-arm64+raspi.img.xz){ .md-button .md-button--primary } 
     ダウンロードしたイメージは[rpi-imager](https://www.raspberrypi.com/software/)等でSDカードに書き込みます。
 
     * rpi-imagerのインストール
