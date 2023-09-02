@@ -14,13 +14,13 @@ Raspberry Pi CatでEthernet接続のLiDARを使えるようにする方法につ
 | LANケーブル（有線通信の場合） | 2D LiDAR（[北陽](https://www.hokuyo-aut.co.jp/search/?cate01=1)） | 
 | USB LAN アダプタ||
 
-## LiDAR と接続する前設定
+## LiDAR と物理的に接続
 
 LiDAR の LAN ケーブルを Raspberry Pi につなげ、LiDAR の電源を入れる。
 
+## LiDAR とソフト的に接続
 Raspberry Pi で以下を実行する。
 
-## LiDAR と接続
 ```sh
 cd ~/raspicat2/src/raspicat_setup_scripts/ether_lidar/scripts
 sudo ./setup.sh urg 192.168.0.100 192.168.0.1
