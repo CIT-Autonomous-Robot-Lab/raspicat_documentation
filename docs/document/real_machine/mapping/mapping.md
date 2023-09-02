@@ -36,7 +36,7 @@ Raspberry Pi Catで地図作成をする方法について説明します。
 
     ```sh
     # 取得したrosbagをノートPCに移動（有線接続の場合）
-    sudo scp -r $HOME/rosbag_mapping ubuntu@10.42.0.1:$HOME
+    sudo scp -r ubuntu@10.42.0.1:~/rosbag_mapping $HOME
 
     ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
     ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
