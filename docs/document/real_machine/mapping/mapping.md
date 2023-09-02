@@ -57,4 +57,6 @@ Raspberry Pi Catで地図作成をする方法について説明します。
     #### ノートPCでの実行
     ```sh
     ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
+    # ~/map に保存
+    ros2 run nav2_map_server map_saver_cli -f ~/map
     ```
