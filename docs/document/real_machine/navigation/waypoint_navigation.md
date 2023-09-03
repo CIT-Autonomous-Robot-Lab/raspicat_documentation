@@ -1,7 +1,11 @@
-# WayPoint を YAML ファイルに保存してロードとセーブ
+## 概要
+ROS 2のRaspberry Pi Catシミュレータでウェイポイントナビゲーションをする方法について説明します。 
+[Set Up/有線LAN（Ethernet）](../set_up/wired.md)および[Set Up/無線LAN（Wi-Fi）](../set_up/wireless.md)で、各設定が済んでいる前提で説明をします。
+
+## WaypointをYAMLファイルに保存してロードとセーブ
 
 ## パッケージの取得
-ノート PC で実行する
+ノートPCで実行する
 ### クローン
 ``` bash
 cd ~/raspicat2/src
@@ -27,6 +31,5 @@ ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
 ros2 service call /motor_power std_srvs/SetBool '{data: true}'
 ```
 
-開いた RViz 上で waypoint の設置 -> yaml に保存 -> yaml の読み込み を行う。
-
-
+開いたRVizのパネル・ツールにあるボタンで  
+ウェイポイントの設置 -> YAMLファイルに保存 -> YAMLファイルの読み込みを行う。

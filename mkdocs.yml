@@ -96,7 +96,7 @@ nav:
       - 地図作成: document/real_machine/mapping/mapping.md
     - Navigation:
       - ナビゲーション: document/real_machine/navigation/navigation.md
-      - WayPoints YAML: document/real_machine/navigation/waypoint_load_save.md
+      - ウェイポイント ナビゲーション: document/real_machine/navigation/waypoint_navigation.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md

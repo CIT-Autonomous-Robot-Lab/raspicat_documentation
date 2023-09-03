@@ -12,7 +12,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 | Hardware            |                  | 
 | ------------------- | ---------------- | 
 | ノートPC            | Raspberry Pi Cat（Raspberry Pi 4B+） | 
-|   Joystick Controller  | microSDカード（32GB以上が好ましい）       | 
+| Joystick Controller  | microSDカード（32GB以上が好ましい）       | 
 | LANケーブル         |   | 
 
 ## 環境構築手順
