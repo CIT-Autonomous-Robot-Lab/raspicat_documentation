@@ -4,18 +4,18 @@
 ノート PC で実行する
 ### クローン
 ``` bash
-cd ~/ros2_ws/src
+cd ~/raspicat2/src
 git clone -b feat/tsukuba-challenge-2023-ex https://github.com/CIT-Autonomous-Robot-Lab/navigation2
 ```
 ### 過去のコミットに戻す
 ``` bash
-cd ~/ros2_ws/src/navigation2
+cd ~/raspicat2/src/navigation2
 git reset b893e538ffc9667bf0a3ab0c99070439f5521718
 ```
 
 ### ビルド
 ``` bash
-cd ~/ros2_ws
+cd ~/raspicat2
 colcon build --packages-select raspicat_description emcl2 raspicat_setup_scripts raspicat_slam raspicat_speak2 raspicat_bringup raspicat_navigation raspicat raspicat_gazebo nav2_msgs nav2_rviz_plugins nav2_waypoint_follower
 source install/setup.bash
 ```
