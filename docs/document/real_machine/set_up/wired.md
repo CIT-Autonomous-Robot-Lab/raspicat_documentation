@@ -12,7 +12,7 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 | Hardware            |                  | 
 | ------------------- | ---------------- | 
 | ノートPC            | Raspberry Pi Cat（Raspberry Pi 4B+） | 
-|   Joystick Controller  | microSDカード（32GB以上が好ましい）       | 
+| Joystick Controller  | microSDカード（32GB以上が好ましい）       | 
 | LANケーブル         |   | 
 
 ## 環境構築手順
@@ -72,7 +72,8 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     * イメージのダウンロード  
     [Ubuntu 22.04 LTSのリリースページ](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/)から**Ubuntu 22.04 server**のイメージファイル  
     （`ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz`）をダウンロードします。  
-    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.2-preinstalled-server-armhf+raspi.img.xz){ .md-button .md-button--primary }  
+    [ここをクリックするとダウンロードが始まります](http://cdimage.ubuntu.com/ubuntu/releases/22.04/release/ubuntu-22.04.3-preinstalled-server-arm64+raspi.img.xz){ .md-button .md-button--primary } 
+
     ダウンロードしたイメージは[rpi-imager](https://www.raspberrypi.com/software/)等でSDカードに書き込みます。
 
     * rpi-imagerのインストール
@@ -88,6 +89,10 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
     **ダウンロードしたイメージ**と**microSDカード**を選択し  
     以下のようにmicroSDカードに書き込みましょう。
     [![Image from Gyazo](https://i.gyazo.com/9157c716a1debe037a04fc3336bc695a.png)](https://gyazo.com/9157c716a1debe037a04fc3336bc695a)
+
+    !!! Warning
+        「詳細な設定」はすべてオフにしてください。
+        ここで「ホスト名」や「ユーザ名」を設定すると、この後デバイスドライバをインストールする際にエラーが発生します。
 
     ### 2. 焼いたmicroSDカードをRaspberry Piに挿してRaspberry Pi Catを起動
 
@@ -315,3 +320,4 @@ Raspberry Pi Catでナビゲーションを行うための環境構築手順に�
 
     !!! info
         デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
+
