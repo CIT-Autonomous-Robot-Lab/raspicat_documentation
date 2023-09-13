@@ -73,6 +73,7 @@ markdown_extensions:
     - pymdownx.inlinehilite
     - pymdownx.snippets
     - pymdownx.superfences
+    - pymdownx.details
 
 nav:
 
@@ -94,6 +95,7 @@ nav:
       - 時刻同期: document/real_machine/time_synchronization/time_synchronization.md
     - Mapping: 
       - 地図作成: document/real_machine/mapping/mapping.md
+      - FAST_LIOで地図作成: document/real_machine/mapping/fast_lio.md
     - Navigation:
       - ナビゲーション: document/real_machine/navigation/navigation.md
       - ウェイポイント ナビゲーション: document/real_machine/navigation/waypoint_navigation.md
