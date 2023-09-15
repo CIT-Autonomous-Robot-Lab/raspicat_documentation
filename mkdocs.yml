@@ -82,6 +82,7 @@ nav:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
   
   - Simulator:
+    - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
     - Set Up:
