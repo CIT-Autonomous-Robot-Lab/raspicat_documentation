@@ -191,7 +191,7 @@ ros2 service call /map_save std_srvs/srv/Trigger
                     /ekf_pose_with_covariance
         ```
 
-=== "rosbag record by command"
+=== "rosbag record by ros2 command"
 
     ```bash
     ros2 launch livox_ros_driver2 msg_MID360_launch.py
