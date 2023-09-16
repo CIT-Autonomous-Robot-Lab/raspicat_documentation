@@ -11,7 +11,8 @@
 ## パッケージのビルド＆インストール
 
 ```sh
-mkdir -p raspicat_map2gazebo_ws/src && cd raspicat_map2gazebo_ws 
+grep -q "source $HOME/raspicat_map2gazebo_ws/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat_map2gazebo_ws/install/setup.bash" >> ~/.bashrc
+mkdir -p $HOME/raspicat_map2gazebo_ws/src && cd $HOME/raspicat_map2gazebo_ws
 git clone https://github.com/CIT-Autonomous-Robot-Lab/raspicat_map2gazebo.git src/raspicat_map2gazebo
 vcs import src < src/raspicat_map2gazebo/raspicat_map2gazebo.repos --debug
 rosdep update
@@ -37,8 +38,8 @@ ros2 launch raspicat_map2gazebo map2gazebo.launch.xml \
 ## シミュレータ環境のチェック
 **シミュレータ環境の作成**で入力した同じ`world_name`を入力してください。  
 生成したモデルを読み込むために`colcon build`を実行する必要があります。
-```
-cd raspicat_map2gazebo_ws
+```bash
+cd $HOME/raspicat_map2gazebo_ws
 colcon build --symlink-install
 ros2 launch raspicat_map2gazebo check_gazebo_world.launch.xml \
     world_name:=tsudanuma_2_19
@@ -48,8 +49,8 @@ ros2 launch raspicat_map2gazebo check_gazebo_world.launch.xml \
 
 ## シミュレータ環境の実行
 * 環境の立ち上げ
-```
-cd raspicat_map2gazebo_ws
+```bash
+cd $HOME/raspicat_map2gazebo_ws
 colcon build --symlink-install
 ros2 launch raspicat_map2gazebo raspicat_tsudanuma_2_19_world.launch \
     x_pose:=0.0 \
@@ -57,7 +58,7 @@ ros2 launch raspicat_map2gazebo raspicat_tsudanuma_2_19_world.launch \
 ```
 
 * ジョイスティックコントローラ操作
-```
+```bash
 ros2 service call /motor_power std_srvs/SetBool '{data: true}'
 ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
 ```
