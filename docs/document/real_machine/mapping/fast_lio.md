@@ -40,7 +40,7 @@ sudo apt install -y libeigen3-dev
 ## 4. LIVOXドライバのインストール
 
 ???+ note "LIVOX MID-360の環境構築"
-    **[LIVOX MID-360 環境構築](./../set_up/livox.md)が済んでいる場合は飛ばしてください**
+    **[LIVOX MID-360 環境構築](./../set_up/livox.md)**が**全て**済んでいる場合は飛ばしてください
 
     <!-- ???+ LIVOXMID-360の環境構築 -->
     !!! warning 
@@ -58,7 +58,11 @@ sudo apt install -y libeigen3-dev
     git clone https://github.com/Livox-SDK/livox_ros_driver2
     ```
 
-    ### 4.3 build.sh:61行目の変更
+    ### 4.3 build.sh:
+    ```bash
+    sed -i 's/colcon build --cmake-args -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/' $HOME/livox_ws/src/livox_ros_driver2/build.sh
+
+    ```
 
     ```diff
     -    colcon build --cmake-args -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}
@@ -84,9 +88,10 @@ sudo apt install -y libeigen3-dev
     cd $HOME/livox_ws/src/Livox-SDK2/ && mkdir build && cd build
     cmake .. && make -j
     sudo make install
-    source $HOME/livox_ws/install/setup.bash
     cd $HOME/livox_ws/src/livox_ros_driver2/
     ./build.sh humble
+    source /opt/ros/humble/setup.sh
+    source $HOME/livox_ws/install/setup.bash
     ```
 
     ### 4.6 実行
@@ -135,6 +140,7 @@ git submodule update --init
 cd $HOME/ros2_ws/
 source $HOME/livox_ws/install/setup.bash
 colcon build --symlink-install --packages-select fast_lio
+source $HOME/ros2_ws/install/setup.bash
 ```
 
 !!! Tip
