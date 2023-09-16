@@ -27,31 +27,42 @@ date: 2023-09-10
 | :----: | :----: | :----: | :----: | :----: |
 | livox-host | 192.168.1.50 | 255.255.255.0 | 192.168.1.1 | 192.168.1.1 |
 
-以下のスクリプトを実行することで、設定できる
-```bash
-#!/bin/bash
+LIVOXを接続し、以下のスクリプトを実行することで設定できる
 
-# ip linkコマンドの出力を取得
-ip_output=$(ip link)
+- スクリプトの生成
+    ```bash
+    vim setup_profile_for_livox.sh
+    ```
+- 編集内容
+    ```bash
+    #!/bin/bash
 
-# ネットワークインターフェース名の抽出
-interface_name=$(echo "$ip_output" | grep -oP '(?<=^\d: )[^\:]+')
-IFS=" " read -ra interface_array <<< "$(echo "$interface_name" | awk 'NR==2')"
+    # ip linkコマンドの出力を取得
+    ip_output=$(ip link)
 
-echo "ネットワークインターフェース名: ${interface_array[0]}"
+    # ネットワークインターフェース名の抽出
+    interface_name=$(echo "$ip_output" | grep -oP '(?<=^\d: )[^\:]+')
+    IFS=" " read -ra interface_array <<< "$(echo "$interface_name" | awk 'NR==2')"
 
-sudo nmcli connection add \
-  con-name livox-test \
-  ifname ${interface_array[0]} \
-  type ethernet \
-  ipv4.method manual \
-  ipv4.address 192.168.1.50/24 \
-  ipv4.gateway 192.168.1.1 \
-  ipv6.method disabled \
-  ipv4.dns 192.168.1.1
+    echo "ネットワークインターフェース名: ${interface_array[0]}"
 
-nmcli connection up livox-test
-```
+    sudo nmcli connection add \
+    con-name livox-test \
+    ifname ${interface_array[0]} \
+    type ethernet \
+    ipv4.method manual \
+    ipv4.address 192.168.1.50/24 \
+    ipv4.gateway 192.168.1.1 \
+    ipv6.method disabled \
+    ipv4.dns 192.168.1.1
+
+    nmcli connection up livox-test
+    ```
+- 実行
+    ```bash
+    chmod +x setup_profile_for_livox.sh
+    sudo ./setup_profile_for_livox.sh
+    ```
 
 ## 2. IPアドレス確認
 
@@ -87,7 +98,7 @@ ping 192.168.1.119
 
     ### 3.2 build
     ```bash
-    cd $HOME/livox/src/Livox-SDK2/ && mkdir build && cd build
+    cd $HOME/livox_ws/src/Livox-SDK2/ && mkdir build && cd build
     cmake .. && make -j
     sudo make install
     ```
