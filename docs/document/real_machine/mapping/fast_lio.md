@@ -28,13 +28,13 @@ LiDARの特徴点とIMUデータを緊密に結合し、高速動作、ノイズ
 ## 2. pcl_rosのインストール
 
 ```bash
-sudo apt install ros-$ROS_DISTRO-pcl-*
+sudo apt install -y ros-$ROS_DISTRO-pcl-*
 ```
 
 ## 3. Eigenのインストール
 
 ```bash
-sudo apt install libeigen3-dev
+sudo apt install -y libeigen3-dev
 ```
 
 ## 4. LIVOXドライバのインストール
@@ -128,7 +128,7 @@ sudo apt install libeigen3-dev
 ## 5. FAST_LIOのインストール
 
 ```bash
-cd $HOME/ros2_ws/src/
+mkdir -p $HOME/ros2_ws/src && cd $HOME/ros2_ws/src/
 git clone https://github.com/Ericsii/FAST_LIO.git
 cd FAST_LIO
 git submodule update --init
