@@ -8,6 +8,12 @@ date: 2023-09-11
 
 # FAST_LIOで地図作成マニュアル
 
+## 0. FAST_LIOについて
+
+FAST-LIO（Fast LiDAR-Inertial Odometry）は、計算効率が高くて頑強なLiDAR-慣性オドメトリパッケージです。
+
+LiDARの特徴点とIMUデータを緊密に結合し、高速動作、ノイズの多い環境、または雑多な環境での頑強なナビゲーションを可能にするために、反復拡張カルマンフィルタを使用している。
+
 - オリジナル: 
 <iframe class="hatenablogcard" style="width:100%;height:155px;max-width:680px;" title="%text%" src="https://hatenablog-parts.com/embed?url=https://github.com/hku-mars/FAST_LIO" width="400" height="150" frameborder="0" scrolling="no"> </iframe> 
 
@@ -22,13 +28,13 @@ date: 2023-09-11
 ## 2. pcl_rosのインストール
 
 ```bash
-$ sudo apt install ros-$ROS_DISTRO-pcl-*
+sudo apt install ros-$ROS_DISTRO-pcl-*
 ```
 
 ## 3. Eigenのインストール
 
 ```bash
-$ sudo apt install libeigen3-dev
+sudo apt install libeigen3-dev
 ```
 
 ## 4. LIVOXドライバのインストール
@@ -42,14 +48,14 @@ $ sudo apt install libeigen3-dev
     
     ### 4.1 新規ワークスペースの作成
     ```bash
-    $ mkdir $HOME/livox_ws/src -p && cd $HOME/livox_ws/src
+    mkdir $HOME/livox_ws/src -p && cd $HOME/livox_ws/src
     ```
 
     ### 4.2 ドライバのclone
 
     ```bash
-    $ git clone https://github.com/Livox-SDK/Livox-SDK2
-    $ git clone https://github.com/Livox-SDK/livox_ros_driver2
+    git clone https://github.com/Livox-SDK/Livox-SDK2
+    git clone https://github.com/Livox-SDK/livox_ros_driver2
     ```
 
     ### 4.3 build.sh:61行目の変更
@@ -62,8 +68,8 @@ $ sudo apt install libeigen3-dev
     ### 4.4 hostpcとLIVOXのIPアドレスの設定
 
     ```bash
-    $ sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
-    $ sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
+    sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
+    sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     ```
 
     !!! example
@@ -75,19 +81,19 @@ $ sudo apt install libeigen3-dev
     ### 4.5 build
 
     ```bash
-    $ cd $HOME/livox_ws/src/Livox-SDK2/ && mkdir build && cd build
-    $ cmake .. && make -j
-    $ sudo make install
-    $ source $HOME/livox_ws/install/setup.bash
-    $ cd $HOME/livox_ws/src/livox_ros_driver2/
-    $ ./build.sh humble
+    cd $HOME/livox_ws/src/Livox-SDK2/ && mkdir build && cd build
+    cmake .. && make -j
+    sudo make install
+    source $HOME/livox_ws/install/setup.bash
+    cd $HOME/livox_ws/src/livox_ros_driver2/
+    ./build.sh humble
     ```
 
     ### 4.6 実行
 
     ```bash
-    $ ros2 launch livox_ros_driver2 rviz_MID360_launch.py
-    $ ros2 topic list -t
+    ros2 launch livox_ros_driver2 rviz_MID360_launch.py
+    ros2 topic list -t
     ```
 
     !!! success
@@ -122,13 +128,13 @@ $ sudo apt install libeigen3-dev
 ## 5. FAST_LIOのインストール
 
 ```bash
-$ cd $HOME/ros2_ws/src/
-$ git clone https://github.com/Ericsii/FAST_LIO.git
-$ cd FAST_LIO
-$ git submodule update --init
-$ cd $HOME/ros2_ws/
-$ source $HOME/livox_ws/install/setup.bash
-$ colcon build --symlink-install --packages-select fast_lio
+cd $HOME/ros2_ws/src/
+git clone https://github.com/Ericsii/FAST_LIO.git
+cd FAST_LIO
+git submodule update --init
+cd $HOME/ros2_ws/
+source $HOME/livox_ws/install/setup.bash
+colcon build --symlink-install --packages-select fast_lio
 ```
 
 !!! Tip
@@ -145,17 +151,19 @@ $ colcon build --symlink-install --packages-select fast_lio
 
 ## 7. 動作確認
 ```bash
-$ ros2 launch livox_ros_driver2 msg_MID360_launch.py
-$ ros2 launch fast_lio mapping.launch.py
-$ ros2 service call /map_save std_srvs/srv/Trigger
+ros2 launch livox_ros_driver2 msg_MID360_launch.py
+ros2 launch fast_lio mapping.launch.py
+ros2 service call /map_save std_srvs/srv/Trigger
 ```
 
 !!! note
-    `$ ros2 service call /map_save std_srvs/srv/Trigger`を実行したディレクトリに`test.pcd`という名前のファイルが保存される
+    `ros2 service call /map_save std_srvs/srv/Trigger`を実行したディレクトリに`test.pcd`という名前のファイルが保存される
 
 !!! tip 
-    **ファイルパスを変更したい場合**: 
-    `condig/mid360.yaml`の`map_file_path: `を変更する
+    **ファイルパスを変更したい場合**:
+
+    - `config/mid360.yaml`の`map_file_path: `を変更する
+
     ```diff linenums="3"
     -        map_file_path: "./test.pcd"
     +        map_file_path: "<path_to_your_map_file>"
@@ -163,20 +171,19 @@ $ ros2 service call /map_save std_srvs/srv/Trigger
 
 
 
-## 8. ROS Bagの取得
+## 8. rosbagの取得
 
-=== "launch file"
+=== "rosbag record by launch file"
 
     ```bash
-    $ ros2 launch livox_ros_driver2 msg_MID360_launch.py
-    $ ros2 launch fast_lio mapping.launch.py
-    $ ros2 launch raspicat_bringup rosbag_record.launch.py rosbag_path:=$HOME/rosbag_mapping
+    ros2 launch livox_ros_driver2 msg_MID360_launch.py
+    ros2 launch raspicat_bringup rosbag_record.launch.py rosbag_path:=$HOME/rosbag_mapping
     ```
 
     !!! info
         **topicを指定したい場合**
         ```bash
-        $ ros2 launch raspicat_bringup rosbag_record.launch.py \
+        ros2 launch raspicat_bringup rosbag_record.launch.py \
             rosbag_path:=$HOME/rosbag_mapping \
             topics:=/odom \
                     /point_raw \
@@ -184,31 +191,42 @@ $ ros2 service call /map_save std_srvs/srv/Trigger
                     /ekf_pose_with_covariance
         ```
 
-=== "terminal"
+=== "rosbag record by command"
 
     ```bash
-    $ ros2 launch livox_ros_driver2 msg_MID360_launch.py
-    $ ros2 launch fast_lio mapping.launch.py
-    $ ros2 bag record -o ${HOME}/rosbag_mapping
+    ros2 launch livox_ros_driver2 msg_MID360_launch.py
+    ros2 bag record -o ${HOME}/rosbag_mapping
     ```
 
     !!! info
         **topicを指定したい場合**
         ```bash
-        $ ros2 bag record -o ${HOME}/rosbag_mapping \
+        ros2 bag record -o ${HOME}/rosbag_mapping \
             /odom \
             /point_raw \
             /pointcloud_map \
             /ekf_pose_with_covariance
         ```
 
-## 9. ROS Bagを再生して地図作成
+## 9. rosbagを再生して地図作成
+
+!!! tip
+    **`/livox/lidar`のtopicの型が`sensor_msgs/msg/PointCloud2`で地図作成したい場合**:
+
+    - `config/mid360.yaml`の`lidar_type: `を変更する
+
+    ```diff linenums="11"
+            preprocess:
+    -           lidar_type: 1                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 4 for any other pointcloud input
+    +           lidar_type: 4                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 4 for any other pointcloud input
+    ```
+    `lidar_type: 1`だと、`/livox/lidar`のtopicの型が`livox_ros_driver2/msg/CustomMsg`となる
 
 ```bash
-$ ros2 launch fast_lio mapping.launch.py config_path:=$HOME/ros2_ws/src/FAST_LIO/config/mid360.yaml
-$ ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
+ros2 launch fast_lio mapping.launch.py config_path:=$HOME/ros2_ws/src/FAST_LIO/config/mid360.yaml
+ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
 # rosbag再生終了後、地図を取得
-$ ros2 service call /map_save std_srvs/srv/Trigger
+ros2 service call /map_save std_srvs/srv/Trigger
 ```
 
 <!-- 
