@@ -41,7 +41,7 @@ IFS=" " read -ra interface_array <<< "$(echo "$interface_name" | awk 'NR==2')"
 echo "ネットワークインターフェース名: ${interface_array[0]}"
 
 sudo nmcli connection add \
-con-name livox-test \
+con-name livox-host \
 ifname ${interface_array[0]} \
 type ethernet \
 ipv4.method manual \
@@ -50,7 +50,7 @@ ipv4.gateway 192.168.1.1 \
 ipv6.method disabled \
 ipv4.dns 192.168.1.1
 
-nmcli connection up livox-test
+nmcli connection up livox-host
 ```
 
 ## 2. IPアドレス確認
@@ -109,7 +109,7 @@ ping 192.168.1.119
 
 
     !!! warning
-        `FAST_LIO`とは別のワークスペースを分ける
+        `FAST_LIO`とはワークスペースを分ける
     ### 3.1 新規ワークスペースの作成
 
     ```bash
@@ -143,9 +143,10 @@ ping 192.168.1.119
     ### 3.5 build
 
     ```bash
-    source $HOME/livox_ws/install/setup.bash
     cd $HOME/livox_ws/src/livox_ros_driver2
     ./build.sh humble
+    source /opt/ros/humble/setup.sh
+    source $HOME/livox_ws/install/setup.bash
     ```
 
     ### 3.6 実行
