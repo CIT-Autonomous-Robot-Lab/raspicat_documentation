@@ -94,7 +94,7 @@ ping 192.168.1.119
 
     ### 3.3 `host_ip`の設定
     ```bash
-    sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/Livox-SDK2/samples/livox_lidar_quick_start/mid360l_config.json
+    sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/Livox-SDK2/samples/livox_lidar_quick_start/mid360_config.json
     ```
 
     ### 3.4 実行
@@ -103,7 +103,7 @@ ping 192.168.1.119
     ./livox_lidar_quick_start ../../../samples/livox_lidar_quick_start/mid360_config.json
     ```
 
-===+ "ROS 2: Humble動作確認"
+=== "ROS 2: Humble動作確認"
 
     <!-- ## 4. ROS 2: Humble動作確認 -->
 
@@ -123,6 +123,10 @@ ping 192.168.1.119
     ```
 
     ### 3.3 build.sh:61行目の変更
+    ```bash
+    sed -i 's/colcon build --cmake-args -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/' $HOME/livox_ws/src/livox_ros_driver2/build.sh
+
+    ```
 
     ```diff linenums="61"
     -    colcon build --cmake-args -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}
@@ -132,8 +136,8 @@ ping 192.168.1.119
     ### 3.4 hostpcとLIVOXのIPアドレスの設定
 
     ```bash
-    sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ros_driver2/config/MID360_config.json
-    sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ros_driver2/config/MID360_config.json
+    sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
+    sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     ```
 
     ### 3.5 build
