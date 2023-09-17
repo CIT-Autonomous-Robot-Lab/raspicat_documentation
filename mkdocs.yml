@@ -83,12 +83,14 @@ nav:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
   
   - Simulator:
+    - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
     - Set Up:
       - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
       - 無線LAN（Wi-Fi）: document/real_machine/set_up/wireless.md
       - Ethernet LiDAR の接続: document/real_machine/set_up/ethernet_lidar.md
+      - Livox MID-360 環境構築: document/real_machine/set_up/livox.md
     - Basic Operation: 
       - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Time Synchronization: 
