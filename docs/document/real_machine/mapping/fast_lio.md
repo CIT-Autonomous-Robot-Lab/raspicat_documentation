@@ -201,7 +201,7 @@ ros2 service call /map_save std_srvs/srv/Trigger
 
     ```bash
     ros2 launch livox_ros_driver2 msg_MID360_launch.py
-    ros2 bag record -o ${HOME}/rosbag_mapping
+    ros2 bag record -o ${HOME}/rosbag_mapping --all
     ```
 
     !!! info
