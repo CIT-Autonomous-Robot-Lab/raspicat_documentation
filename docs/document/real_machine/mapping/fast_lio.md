@@ -168,7 +168,7 @@ ros2 service call /map_save std_srvs/srv/Trigger
 !!! tip 
     **ファイルパスを変更したい場合**:
 
-    - `config/mid360.yaml`の`map_file_path: `を変更する
+    - [`config/mid360.yaml`](https://github.com/Ericsii/FAST_LIO/blob/206855b1f9410c1e1b0e84c46053adfcd070256e/config/mid360.yaml#L3)の`map_file_path: `を変更する
 
     ```diff linenums="3"
     -        map_file_path: "./test.pcd"
@@ -219,7 +219,7 @@ ros2 service call /map_save std_srvs/srv/Trigger
 !!! tip
     **`/livox/lidar`のtopicの型が`sensor_msgs/msg/PointCloud2`で地図作成したい場合**:
 
-    - `config/mid360.yaml`の`lidar_type: `を変更する
+    - [`config/mid360.yaml`](https://github.com/Ericsii/FAST_LIO/blob/206855b1f9410c1e1b0e84c46053adfcd070256e/config/mid360.yaml#L12)の`lidar_type: `を変更する
 
     ```diff linenums="11"
             preprocess:
