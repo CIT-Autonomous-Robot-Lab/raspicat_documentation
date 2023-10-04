@@ -133,14 +133,26 @@ ping 192.168.1.119
     +    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}
     ```
 
-    ### 3.4 hostpcとLIVOXのIPアドレスの設定
+    ### 3.4 msg_MID360_launch.pyの変更
+    ```bash
+    sed -i 's/xfer_format   = 1/xfer_format   = 0/' $HOME/livox_ws/src/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py
+    ```
+
+    ```diff linenums="5"
+    -xfer_format   = 1    # 0-Pointcloud2(PointXYZRTL), 1-customized pointcloud format
+    +xfer_format   = 0    # 0-Pointcloud2(PointXYZRTL), 1-customized pointcloud format
+    ```
+    !!! note
+        `/livox/lidar`のメッセージ型を`sensor_msgs/msg/PointCloud2`に設定
+
+    ### 3.5 hostpcとLIVOXのIPアドレスの設定
 
     ```bash
     sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     ```
 
-    ### 3.5 build
+    ### 3.6 build
 
     ```bash
     cd $HOME/livox_ws/src/livox_ros_driver2
@@ -149,7 +161,7 @@ ping 192.168.1.119
     source $HOME/livox_ws/install/setup.bash
     ```
 
-    ### 3.6 実行
+    ### 3.7 実行
 
     ```bash
     ros2 launch livox_ros_driver2 rviz_MID360_launch.py
