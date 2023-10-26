@@ -92,7 +92,7 @@ nav:
       - Ethernet LiDAR の接続: document/real_machine/set_up/ethernet_lidar.md
       - Livox MID-360 環境構築: document/real_machine/set_up/livox.md
     - Clone & Restore:
-      - バックアップイメージの取得とリストア: document/realmachine/clone_restore.md
+      - バックアップイメージの取得とリストア: document/real_machine/clone_restore.md
     - Basic Operation: 
       - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Time Synchronization: 
