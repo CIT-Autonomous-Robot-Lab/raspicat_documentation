@@ -1,5 +1,5 @@
 ## 概要
-raspicatを[emcl2_ros2](https://github.com/cit-autonomous-robot-lab/emcl2_ros2)で自己位置推定させる方法
+Raspberry Pi Catを[emcl2_ros2](https://github.com/cit-autonomous-robot-lab/emcl2_ros2)で自己位置推定させる方法
 
 ## 環境構築手順
 ### パッケージの準備
