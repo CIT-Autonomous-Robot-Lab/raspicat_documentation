@@ -1,12 +1,12 @@
 ---
 title: クローン
-summary: Raspberry Pi のバックアップとリストア
+summary: Raspberry Pi のSDカードのバックアップとリストア
 authors:
     - Ikuo Shige
 date: 2023-10-17
 ---
 
-# Raspberry Piのクローン
+# Raspberry Pi のSDカードのクローン
 
 ## バックアップイメージの取得とリストア
 
