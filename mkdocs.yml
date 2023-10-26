@@ -89,7 +89,6 @@ nav:
       - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
       - 無線LAN（Wi-Fi）: document/real_machine/set_up/wireless.md
       - Ethernet LiDAR の接続: document/real_machine/set_up/ethernet_lidar.md
-      - emcl2_ros2 の使用: document/real_machine/set_up/emcl2_ros2.md
     - Basic Operation: 
       - 基本操作: document/real_machine/basic_operation/basic_operation.md
     - Time Synchronization: 
@@ -99,6 +98,7 @@ nav:
     - Navigation:
       - ナビゲーション: document/real_machine/navigation/navigation.md
       - ウェイポイント ナビゲーション: document/real_machine/navigation/waypoint_navigation.md
+      - emcl2_ros2 の使用: document/real_machine/set_up/emcl2_ros2.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
