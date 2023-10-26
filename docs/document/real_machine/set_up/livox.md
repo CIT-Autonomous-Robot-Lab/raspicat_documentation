@@ -34,15 +34,17 @@ LIVOXを接続し、以下のスクリプトを実行することで設定でき
 # ip linkコマンドの出力を取得
 ip_output=$(ip link)
 
-# ネットワークインターフェース名の抽出
-interface_name=$(echo "$ip_output" | grep -oP '(?<=^\d: )[^\:]+')
-IFS=" " read -ra interface_array <<< "$(echo "$interface_name" | awk 'NR==2')"
+# 正規表現パターンを定義
+pattern="(eno|enp|ens|enx|eth0)[[:alnum:]]*"
 
-echo "ネットワークインターフェース名: ${interface_array[0]}"
+# ネットワークインターフェース名の抽出
+interface_name=$(echo "$ip_output" | grep -oE "$pattern")
+
+echo "ネットワークインターフェース名: $interface_name"
 
 sudo nmcli connection add \
 con-name livox-host \
-ifname ${interface_array[0]} \
+ifname $interface_name \
 type ethernet \
 ipv4.method manual \
 ipv4.address 192.168.1.50/24 \
