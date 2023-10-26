@@ -32,7 +32,7 @@ ros2 launch raspicat_navigation raspicat_nav2.launch.py
 ### `/emcl2`ノードが立ち上がったことを確認
 `/amcl`ノードが立ち上がっていないことも確認
 ``` bash
-ros2 node list
+ros2 node list | grep /emcl2
 ```
 
 ## amclに戻したい場合
