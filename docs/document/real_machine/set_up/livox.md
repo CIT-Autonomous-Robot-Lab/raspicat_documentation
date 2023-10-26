@@ -133,12 +133,12 @@ ping 192.168.1.119
     +    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}
     ```
 
-    ### 3.4 msg_MID360_launch.pyの変更
+    ### 3.4 [msg_MID360_launch.py](https://github.com/Livox-SDK/livox_ros_driver2/blob/master/launch_ROS2/msg_MID360_launch.py#L8)の変更
     ```bash
     sed -i 's/xfer_format   = 1/xfer_format   = 0/' $HOME/livox_ws/src/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py
     ```
 
-    ```diff linenums="5"
+    ```diff linenums="8"
     -xfer_format   = 1    # 0-Pointcloud2(PointXYZRTL), 1-customized pointcloud format
     +xfer_format   = 0    # 0-Pointcloud2(PointXYZRTL), 1-customized pointcloud format
     ```
