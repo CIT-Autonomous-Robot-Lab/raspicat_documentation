@@ -103,6 +103,7 @@ nav:
     - Navigation:
       - ナビゲーション: document/real_machine/navigation/navigation.md
       - ウェイポイント ナビゲーション: document/real_machine/navigation/waypoint_navigation.md
+      - emcl2_ros2 の使用: document/real_machine/navigation/emcl2_ros2.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
