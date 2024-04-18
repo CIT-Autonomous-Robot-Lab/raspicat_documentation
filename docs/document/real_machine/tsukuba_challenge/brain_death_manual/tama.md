@@ -4,13 +4,13 @@ PCとRaspberry Pi Catを有線LANで接続した状態で以下のコマンド�
 export ETHERNET_IP=$(sudo arp-scan -l -I $ET_NIC_NAME | awk 'NR==4{print $1}')
 ```
 
-# SSH でキャットにつなぐ（有線 LAN ）
+# SSHでキャットにつなぐ（有線LAN）
 ```
 source ~/.bashrc
 ssh ubuntu@$ETHERNET_IP
 ```
 
-## USB 指し直しが必要
+## USB指し直しが必要
 
 # キャリブレーション
 Raspberry Piで実行
