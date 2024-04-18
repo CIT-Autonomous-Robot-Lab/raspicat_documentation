@@ -1,3 +1,9 @@
+# 変数の設定
+PCとRaspberry Pi Catを有線LANで接続した状態で以下のコマンドを実行
+```
+export ETHERNET_IP=$(sudo arp-scan -l -I $ET_NIC_NAME | awk 'NR==4{print $1}')
+```
+
 # SSH でキャットにつなぐ（有線 LAN ）
 ```
 source ~/.bashrc
