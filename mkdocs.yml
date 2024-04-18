@@ -103,8 +103,9 @@ nav:
     - Navigation:
       - ナビゲーション: document/real_machine/navigation/navigation.md
       - ウェイポイント ナビゲーション: document/real_machine/navigation/waypoint_navigation.md
-    - Dead Brain:
-      - たまチーム: document/real_machine/dead_brain/tama.md
+    - TSUKUBA CHALLENGE:
+      - Brain Death Manual:
+        - たまチーム: document/real_machine/tsukuba_challenge/brain_death_manual/tama.md
 
 - Repository: 
   - Raspberry Pi Cat関連のリポジトリ: repository/repository.md
