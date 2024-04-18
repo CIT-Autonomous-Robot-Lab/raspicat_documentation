@@ -13,6 +13,8 @@ ssh ubuntu@$ETHERNET_IP
 ## USB 指し直しが必要
 
 # キャリブレーション
+Raspberry Piで実行
+[raspimouse2リポジトリのfeat/imu-yaw-estimationブランチ](https://github.com/CIT-Autonomous-Robot-Lab/raspimouse2/tree/feat/imu-yaw-estimation)にあるキャリブレーション用Launchファイルの実行
 ```
 ros2 launch imu_calibration_data imu_c_data_launch.py
 ```
