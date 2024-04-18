@@ -3,13 +3,13 @@ Raspberry Pi Catを[emcl2_ros2](https://github.com/cit-autonomous-robot-lab/emcl
 
 ## 環境構築手順
 ### パッケージの準備
-#### raspicat_slam_navigation
-emcl2_ros2を起動するブランチに切り替える。
+#### [raspicat_slam_navigation](https://github.com/cit-autonomous-robot-lab/raspicat_slam_navigation)
+[emcl2_ros2](https://github.com/cit-autonomous-robot-lab/raspicat_slam_navigation)を起動するブランチに切り替える。
 ``` bash
 cd ~/raspicat2/src/raspicat_slam_navigation
 git checkout -b feat/emcl2-ros2 origin/feat/emcl2-ros2
 ```
-#### emcl2_ros2
+#### [emcl2_ros2](https://github.com/cit-autonomous-robot-lab/emcl2_ros2)
 肝心の[emcl2_ros2](https://github.com/cit-autonomous-robot-lab/emcl2_ros2)パッケージをクローンする。
 ``` bash
 cd ~/raspicat2/src
