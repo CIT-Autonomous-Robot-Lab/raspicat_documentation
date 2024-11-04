@@ -2,8 +2,8 @@ site_name: Raspberry Pi Cat Documentation（上田研 自律移動チーム内�
 site_url: https://uhobeike.github.io/raspicat_documentation/
 site_author: Tatsuhiro Ikebe
 
-repo_name: uhobeike/raspicat_documentation 
-repo_url: https://github.com/uhobeike/raspicat_documentation
+repo_name: CIT-Autonomous-Robot-Lab/raspicat_documentation 
+repo_url: https://github.com/CIT-Autonomous-Robot-Lab/raspicat_documentation
 repo: fontawesome/brands/github
 
 copyright: Copyright &copy; 2022 Tatsuhiro Ikebe
