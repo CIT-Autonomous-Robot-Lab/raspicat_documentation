@@ -26,10 +26,10 @@ Raspberry Pi Catで地図作成をする方法について説明します。
     ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
 
     # 全トピックを取得したい場合
-    ros2 launch raspicat_bringup rosbag_record.launch.py rosbag_path:=$HOME/rosbag_mapping
+    ros2 bag record -a -o ${HOME}/rosbag_mapping/
 
     # 特定のトピックのみを取得したい場合
-    ros2 launch raspicat_bringup rosbag_record.launch.py rosbag_path:=$HOME/rosbag_mapping topics:=/odom /scan /tf /tf_static
+    ros2 bag record -o ${HOME}/rosbag_mapping/ /odom /scan /tf /tf_static
     ```
 
     #### ノートPCでの実行
