@@ -61,10 +61,15 @@ export ROS_DOMAIN_ID=1
 export ROS_DOMAIN_ID=1
 ```
 #実行コマンド
-ロボット側にSSH接続し、以下のコマンドでナビゲーション（EMCL2 + Nav2）を起動します。
+ロボット側にSSH接続(注1)し、以下のコマンドでナビゲーション（EMCL2 + Nav2）を起動します。
+ホストで
 ```bash
 ros2 launch raspicat_navigation emcl2_raspicat_nav2.launch.py map:=/opt/project/map.yaml
 ```
-
+ロボット側(ssh接続した画面)で
+```bash
+ros2 service call /motor_power std_srvs/SetBool '{data: true}' # <-タイムアウトしたらもう一回実行
+ros2 launch raspicat raspicat.launch.py
+```
 
 
