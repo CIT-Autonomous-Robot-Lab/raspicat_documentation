@@ -75,6 +75,8 @@ ros2 launch raspicat raspicat.launch.py
 
 # 注1
 ssh接続について(しらたまの場合)
+LANケーブルを差し込み、電源ON
+認識したら設定->ネットワーク->有線->IPV4->他のコンピュータと接続
 ```bash
 ssh ubuntu@10.42.0.13
 pass:2563
