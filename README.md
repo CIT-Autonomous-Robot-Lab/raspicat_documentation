@@ -15,7 +15,7 @@ raspicatのナビゲーション（Nav2 + EMCL2）をDocker環境で実行する
 mkdir -p shiratama && cd shiratama
 
 # Dockerイメージの取得
-docker pull takabnbn/raspicat_full:v1
+docker pull takabnbn/raspicat_full:v2
 
 # 起動スクリプトの作成
 cat <<EOF > run_docker.sh
@@ -69,8 +69,9 @@ ros2 launch raspicat_navigation emcl2_raspicat_nav2.launch.py map:=/opt/project/
 ```
 ロボット側(ssh接続した画面)で
 ```bash
-ros2 service call /motor_power std_srvs/SetBool '{data: true}' # <-タイムアウトしたらもう一回実行
 ros2 launch raspicat raspicat.launch.py
+#下は別のターミナルで
+ros2 service call /motor_power std_srvs/SetBool '{data: true}' # <-タイムアウトしたらもう一回実行
 ```
 
 # 注1
