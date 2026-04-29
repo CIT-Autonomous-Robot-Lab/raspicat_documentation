@@ -43,6 +43,19 @@ chmod +x run_docker.sh
 
 echo "Setup complete! 'shiratama' folder created and run_docker.sh is ready."
 ```
+```bash
+# プロジェクトディレクトリへ移動
+cd /opt/project
+
+# ビルドの実行
+colcon build --symlink-install
+
+# 環境の読み込み
+source install/setup.bash
+
+# 通信設定（ROS_DOMAIN_IDの指定）
+export ROS_DOMAIN_ID=1
+```
 
 Dockerコンテナの起動
 ```bash
