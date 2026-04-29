@@ -68,5 +68,5 @@ export ROS_DOMAIN_ID=1
 
 ロボット（セットアップ済み）をssh接続し、以下で起動確認
 ```bash
-emcl2_raspicat_nav2.launch.py map:=/opt/project/map.yaml
+ros2 launch raspicat_navigation emcl2_raspicat_nav2.launch.py map:=/opt/project/map.yaml
 ```
