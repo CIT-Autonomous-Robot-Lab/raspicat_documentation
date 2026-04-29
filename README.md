@@ -1,33 +1,25 @@
 # raspicat_documentation
-
 ## preview（use Docker）
-
 ```
 ./mkdocs_serve.sh
 ```
-
-# raspicat_full Docker Environment
-
+以下水牧
+#raspicat_full Docker Environment
 raspicatのナビゲーション（Nav2 + EMCL2）をDocker環境で実行するための手順です。
 
-## 1. イメージの取得
-
-以下のコマンドでDockerイメージをプルします。
-
+#1. セットアップ（初回のみ）
+ホストPC側で以下のブロックをコピー＆ペーストして実行してください。shiratama ディレクトリの作成から、Dockerイメージの取得、起動スクリプトの作成まで一括で行います。
 ```bash
-docker pull takabnbn/raspicat_full:v1
-```
-
-## 2. 起動スクリプトの作成
-
-```bash
-# ディレクトリを作成して移動
+# 作業ディレクトリの作成
 mkdir -p shiratama && cd shiratama
 
-# run_docker.sh を作成
+# Dockerイメージの取得
+docker pull takabnbn/raspicat_full:v1
+
+# 起動スクリプトの作成
 cat <<EOF > run_docker.sh
 #!/bin/bash
-# GUI表示の許可（ホスト側で実行）
+# GUI表示の許可
 xhost +local:docker > /dev/null
 
 # コンテナの起動
@@ -38,35 +30,41 @@ docker run -it --rm \\
   takabnbn/raspicat_full:v1
 EOF
 
-# 実行権限を付与
+# 実行権限の付与
 chmod +x run_docker.sh
 
-echo "Setup complete! 'shiratama' folder created and run_docker.sh is ready."
-```
-```bash
-# プロジェクトディレクトリへ移動
-cd /opt/project
-
-# ビルドの実行
-colcon build --symlink-install
-
-# 環境の読み込み
-source install/setup.bash
-
-# 通信設定（ROS_DOMAIN_IDの指定）
-export ROS_DOMAIN_ID=1
+echo "Setup complete! 'shiratama' folder is ready."
 ```
 
-Dockerコンテナの起動
+#2. コンテナの起動とビルド
+ステップ1：コンテナの起動（ホストPC）
 ```bash
 ./run_docker.sh
 ```
-Raspberry Piとノートパソコンの両方で以下を入力
+#ステップ2：ワークスペースの構築（コンテナ内）
+コンテナに入ったら、以下のコマンドで環境を初期化・ビルドします。
+```bash
+cd /opt/project
+
+# キャッシュのクリアと再ビルド
+rm -rf build/ install/ log/
+colcon build --symlink-install
+
+# 環境の読み込みと通信設定
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+```
+#3. ナビゲーションの実行
+通信設定の確認
+重要： ロボット（Raspberry Pi）とノートパソコン（Dockerコンテナ）の両方で、必ず以下の環境変数が設定されていることを確認してください。
 ```bash
 export ROS_DOMAIN_ID=1
 ```
-
-ロボット（セットアップ済み）をssh接続し、以下で起動確認
+#実行コマンド
+ロボット側にSSH接続し、以下のコマンドでナビゲーション（EMCL2 + Nav2）を起動します。
 ```bash
 ros2 launch raspicat_navigation emcl2_raspicat_nav2.launch.py map:=/opt/project/map.yaml
 ```
+
+
+
