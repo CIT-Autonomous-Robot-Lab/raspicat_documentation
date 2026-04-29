@@ -21,11 +21,32 @@ docker pull takabnbn/raspicat_full:v1
 ## 2. 起動スクリプトの作成
 
 ```bash
+# ディレクトリを作成して移動
+mkdir -p shiratama && cd shiratama
+
+# run_docker.sh を作成
+cat <<EOF > run_docker.sh
+#!/bin/bash
+# GUI表示の許可（ホスト側で実行）
+xhost +local:docker > /dev/null
+
+# コンテナの起動
+docker run -it --rm \\
+  --net=host \\
+  --env="DISPLAY" \\
+  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \\
+  takabnbn/raspicat_full:v1
+EOF
+
+# 実行権限を付与
 chmod +x run_docker.sh
-cd /opt/project
-colcon build --symlink-install
-source install/setup.bash
-ros2 launch raspicat_navigation
+
+echo "Setup complete! 'shiratama' folder created and run_docker.sh is ready."
+```
+
+Dockerコンテナの起動
+```bash
+./run_docker.sh
 ```
 Raspberry Piとノートパソコンの両方で以下を入力
 ```bash
