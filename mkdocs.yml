@@ -81,16 +81,19 @@ nav:
   - このサイトについて: index.md
 - Document:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
-  
+  - Tutorial:
+    - 1 Raspberry Pi Cat シミュレータ: documant/tutorial/1_raspicat_simulator.md 
+    - 2 ノートPCのセットアップ: documant/tutorial/2_laptopsetup.md 
+    - 3 Raspberry Piのセットアップ: documant/tutorial/3_raspisetup.md 
+    - 4 Raspberry Piの無線接続設定: documant/tutorial/4_wireless.md 
+    - 5 MID-360の接続設定: documant/tutorial/5_livox.md 
+    - 6 Raspberry Pi Catでナビゲーション: documant/tutorial/6_navigaiton.md 
   - Simulator:
     - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
-    - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
   - Real Machine:
     - Set Up:
-      - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
-      - 無線LAN（Wi-Fi）: document/real_machine/set_up/wireless.md
       - Ethernet LiDAR の接続: document/real_machine/set_up/ethernet_lidar.md
-      - Livox MID-360 環境構築: document/real_machine/set_up/livox.md
+      - Livox MID-360 と Raspberry Piの同時有線接続設定: document/real_machine/set_up/livox_wired.md
     - Clone & Restore:
       - バックアップイメージの取得とリストア: document/real_machine/clone_restore.md
     - Basic Operation: 
