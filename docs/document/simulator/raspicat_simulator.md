@@ -171,6 +171,7 @@ eog $HOME/map.pgm
 ロボットの自律移動をやってみましょう！
 
 * Navigation（Nav 2）
+ロボットが動かなくなったときは2行目を繰り返し実行
 
 ``` sh
 ros2 launch raspicat_gazebo raspicat_with_iscas_museum.launch.py
