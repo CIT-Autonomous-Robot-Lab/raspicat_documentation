@@ -175,7 +175,7 @@ eog $HOME/map.pgm
 ``` sh
 ros2 launch raspicat_gazebo raspicat_with_iscas_museum.launch.py
 ros2 service call /motor_power std_srvs/SetBool '{data: true}'
-ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
+ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml use_sim_time:=true
 ```
 
 ## B3への課題
