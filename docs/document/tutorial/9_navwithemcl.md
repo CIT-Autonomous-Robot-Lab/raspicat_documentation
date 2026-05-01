@@ -1,15 +1,9 @@
-# raspicat_documentation
-## preview（use Docker）
-```
-./mkdocs_serve.sh
-```
-以下水牧
-
 # raspicat_full Docker Environment
 raspicatのナビゲーション（Nav2 + EMCL2）をDocker環境で実行するための手順です。
 
 # 1. セットアップ（初回のみ）
-ホストPC側で以下のブロックをコピー＆ペーストして実行してください。shiratama ディレクトリの作成から、Dockerイメージの取得、起動スクリプトの作成まで一括で行います。
+ホストPC側で以下のブロックをコピー＆ペーストして実行してください。
+shiratama ディレクトリの作成から、Dockerイメージの取得、起動スクリプトの作成まで一括で行います。
 ```bash
 # 作業ディレクトリの作成
 mkdir -p shiratama && cd shiratama
@@ -55,12 +49,15 @@ colcon build --symlink-install
 source install/setup.bash
 export ROS_DOMAIN_ID=1
 ```
+
 # 3. ナビゲーションの実行
 通信設定の確認
-重要： ロボット（Raspberry Pi）とノートパソコン（Dockerコンテナ）の両方で、必ず以下の環境変数が設定されていることを確認してください。
+重要： ロボット（Raspberry Pi）とノートパソコン（Dockerコンテナ）の両方で、
+必ず以下の環境変数が設定されていることを確認してください。
 ```bash
 export ROS_DOMAIN_ID=1
 ```
+
 # 実行コマンド
 ロボット側にSSH接続(注1)し、以下のコマンドでナビゲーション（EMCL2 + Nav2）を起動します。
 ホストで
@@ -73,14 +70,3 @@ ros2 launch raspicat raspicat.launch.py
 #下は別のターミナルで
 ros2 service call /motor_power std_srvs/SetBool '{data: true}' # <-タイムアウトしたらもう一回実行
 ```
-
-# 注1
-ssh接続について(しらたまの場合)
-LANケーブルを差し込み、電源ON
-認識したら設定->ネットワーク->有線->IPV4->他のコンピュータと接続
-```bash
-ssh ubuntu@10.42.0.13
-pass:2563
-```
-で接続できると思う
-もしかしたらsshキーとかうんたらかんたら表示されるかもですが、調べてやってみてください♡

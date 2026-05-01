@@ -3,20 +3,14 @@ title: LIVOX MID-360 マニュアル
 summary: LIVOX MID-360 の環境構築まとめです。
 authors:
     - Ikuo Shige
-date: 2023-09-10
+    - Keitaro Nakamura
+date: 2026-5-1
 ---
 
-# LIVOX MID-360 マニュアル
-
-## 0. LIVOX MID-360 について
+# LIVOX MID-360
+Mid-360を使用する際には，こちらを行ってください．
 
 [LIVOX MID-360](https://www.livoxtech.com/jp/mid-360)
-
-- 40mレンジの3D LiDAR
-- 視野角: 360° x 59°(仰角)
-- 最短測定距離: 10cm
-- 慣性計測ユニット(Inertial Measurement Unit)搭載
-
 
 ## 1. 有線のプロファイル作成
 
@@ -184,6 +178,23 @@ ping 192.168.1.119
         /tf_static [tf2_msgs/msg/TFMessage]
         ```
 
+=== "pointcloud\_to\_laserscanのインストール"
+
+    ### 4.1 ドライバのclone
+
+    ```bash
+    cd $HOME/livox_ws/src
+    git clone -b humble https://github.com/CIT-Autonomous-Robot-Lab/pointcloud_to_laserscan.git
+    ```
+
+    ### 4.2 build
+
+    ```bash
+    cd $HOME/livox_ws/
+    colcon build --packages-select pointcloud_to_laserscan
+    source /opt/ros/humble/setup.sh
+    source $HOME/livox_ws/install/setup.bash
+    ```
 <!-- 
 ## 4. 参考
 
