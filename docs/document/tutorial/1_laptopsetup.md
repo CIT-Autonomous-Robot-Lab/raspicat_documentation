@@ -24,6 +24,25 @@ Linux（Ubuntu）のネイティブの環境が必要です。
 | ノートPC            |
 
 ## 環境構築手順
+### 0. GitのインストールとGitHubの鍵登録
+
+* Gitのインストール
+```sh
+sudo apt update
+sudo apt install git
+git --version
+# git version 2.x.x のように出力さればインストール成功
+```
+
+* 初期設定
+```sh
+git config --global user.name "<Your Name>" # <Your Name>はあなたの名前に置き換えて実行
+git config --global user.email "<youremail@example.com>" # 同様
+git config --list # 設定を確認するコマンド
+```
+
+* [GitHubでの鍵の登録](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)
+
 ### 1. ROS 2のインストール
 
 * ROS 2のインストールをする場合  
@@ -49,7 +68,7 @@ sudo apt install -y git python3-vcstool xterm
 curl -s https://raw.githubusercontent.com/uhobeike/ssh_config_cit/master/config >> ~/.ssh/config
 ```
 
-* Set Up Workspace（[GitHubでの鍵の登録が済んでいる前提](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)）
+* Set Up Workspace
 ```sh
 git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git $HOME/raspicat2
 grep -q "source $HOME/raspicat2/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat2/install/setup.bash" >> ~/.bashrc
