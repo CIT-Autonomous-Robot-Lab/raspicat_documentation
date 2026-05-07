@@ -2,7 +2,7 @@
 Raspberry Pi Catでナビゲーションを行うため
 Raspberry Piの環境構築手順について説明します。  
 予めノートPCのセットアップを完了してからこちらに進んでください。
-**ノートPC**とRaspberry Pi Catに搭載されている**Raspberry Pi**同士をLANケーブ  
+**ノートPC**とRaspberry Pi Catに搭載されている**Raspberry Pi**同士をLANケーブル
 で接続しセットアップを行います。
 
 ## 必要な物
@@ -26,7 +26,7 @@ Raspberry Piの環境構築手順について説明します。
 （`ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz`）をダウンロードします。  
 [ここをクリックするとダウンロードが始まります](https://old-releases.ubuntu.com/releases/22.04/ubuntu-22.04.1-preinstalled-server-arm64+raspi.img.xz){ .md-button .md-button--primary } 
 
-ダウンロードしたイメージは[rpi-imager](https://www.raspberrypi.com/software/)等でSDカードに書き込みます。
+    ダウンロードしたイメージは[rpi-imager](https://www.raspberrypi.com/software/)等でSDカードに書き込みます。
 
 * rpi-imagerのインストール
 ```sh
@@ -43,8 +43,8 @@ rpi-imager
 [![Image from Gyazo](https://i.gyazo.com/9157c716a1debe037a04fc3336bc695a.png)](https://gyazo.com/9157c716a1debe037a04fc3336bc695a)
 
 !!! Warning
-「詳細な設定」はすべてオフにしてください。
-ここで「ホスト名」や「ユーザ名」を設定すると、この後デバイスドライバをインストールする際にエラーが発生します。
+    「詳細な設定」はすべてオフにしてください。
+    ここで「ホスト名」や「ユーザ名」を設定すると、この後デバイスドライバをインストールする際にエラーが発生します。
 
 ### 2. 焼いたmicroSDカードをRaspberry Piに挿してRaspberry Pi Catを起動
 
@@ -57,7 +57,7 @@ rpi-imager
 **ノートPC**と**Raspberry Pi**間をLANケーブルで接続し、**ノートPC**から**Raspberry Pi**へssh接続を行います。
 
 !!! Warning
-**ノートPC**は**Wi-Fi**に接続している必要があります。
+    **ノートPC**は**Wi-Fi**に接続している必要があります。
 
 1 . **ノートPC**と**Raspberry Pi**間をLANケーブルで接続  
 挿入後にそれぞれのLANポートのインジケーターランプが点滅していることを確認しましょう。
@@ -161,31 +161,31 @@ ping '8.8.8.8'
 ```
 
 !!! info 
-実行後の正常な出力結果は以下のとおりです。  
-```sh hl_lines="2 3 4"
-$ ping '8.8.8.8'
-PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
-64 bytes from 8.8.8.8: icmp_seq=1 ttl=110 time=91.2 ms
-64 bytes from 8.8.8.8: icmp_seq=2 ttl=110 time=38.5 ms
-		    （以下省略）
-```
+    実行後の正常な出力結果は以下のとおりです。  
+    ```sh hl_lines="2 3 4"
+    $ ping '8.8.8.8'
+    PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+    64 bytes from 8.8.8.8: icmp_seq=1 ttl=110 time=91.2 ms
+    64 bytes from 8.8.8.8: icmp_seq=2 ttl=110 time=38.5 ms
+    		    （以下省略）
+    ```
 
 !!! Warning
-**ノートPC**が**Wi-Fi**に接続されている状態で、下記のように結果が何も返ってこない場合は  
-```sh hl_lines="2"
-$ ping '8.8.8.8'
-PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
-```
+    **ノートPC**が**Wi-Fi**に接続されている状態で、下記のように結果が何も返ってこない場合は  
+    ```sh hl_lines="2"
+    $ ping '8.8.8.8'
+    PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+    ```
 
-<span style="font-size: 200%; color: red;">↓**ノートPC上**で下記のコマンドを実行してください↓</span>
-
-```sh 
-export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[opsx]/ {print $2}')
-export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wl[opsx]/ {print $2}')
-sudo iptables -t nat -A POSTROUTING -o $WL_NIC_NAME -j MASQUERADE
-sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
-```
+    <span style="font-size: 200%; color: red;">↓**ノートPC上**で下記のコマンドを実行してください↓</span>
+    
+    ```sh 
+    export ET_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^en[opsx]/ {print $2}')
+    export WL_NIC_NAME=$(ip -o link show | awk -F': ' '$2 ~ /^wl[opsx]/ {print $2}')
+    sudo iptables -t nat -A POSTROUTING -o $WL_NIC_NAME -j MASQUERADE
+    sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+    sudo iptables -A FORWARD -i $ET_NIC_NAME -o $WL_NIC_NAME -j ACCEPT
+    ```
 
 ### 4. aptパッケージのアップグレード
 
@@ -210,8 +210,9 @@ chmod +x /tmp/setup_raspi.sh
 sudo systemctl restart chrony.service
 ```
 !!! info 
-上記のコマンドでは、ノートPC（サーバ）の時間が合っているものとしています。    
-その上で、Raspberry Pi（クライアント）は、ノートPCの時刻を参照し、時刻の更新をします。
+    上記のコマンドでは、ノートPC（サーバ）の時間が合っているものとしています。    
+    その上で、Raspberry Pi（クライアント）は、ノートPCの時刻を参照し、時刻の更新をします。
+
 * aptパッケージの更新  
 ```sh
 sudo apt update -y
@@ -271,5 +272,5 @@ colcon_cd raspicat_setup_scripts
 ```
 
 !!! info
-デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
+    デバイスドライバは、特定のハードウェアデバイスとOS間で通信を行うためのソフトウェアです。
 
