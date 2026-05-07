@@ -1,7 +1,9 @@
+# 6 コントローラ操作
+
 ## 概要
-実機のRaspberry Pi Catをコントローラによって操作します。  
-チュートリアル1-5まで
-で、各設定が済んでいる前提で説明をします。
+実機のRaspberry Pi Catをコントローラによって操作する方法を説明します。
+予め[PCの設定](../1_laptopsetup)、[Raspberry Piの設定](../3_raspisetup)
+を完了してからこちらに進んでください。
 
 ## 必要な物
 | Software         | Version                                      |
