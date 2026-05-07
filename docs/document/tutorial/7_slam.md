@@ -1,7 +1,8 @@
 ## 概要
 Raspberry Pi Catで地図作成をする方法について説明します。 
-1-4（Mid-360を使用する際は5）まで
-で、各設定が済んでいる前提で説明をします。
+予め[PCの設定](../1_laptopsetup)、[Raspberry Piの設定](../3_raspisetup)、
+（LIVOX MID-360を使用する場合は、[無線接続設定](../4_wireless)、[MID360の接続設定](../5_livox)）
+を完了してからこちらに進んでください。
 
 ## 必要な物
 | Software         | Version                                      |
