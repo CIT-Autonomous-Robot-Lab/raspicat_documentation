@@ -1,6 +1,8 @@
 ## 概要
 Raspberry Pi Catでナビゲーションをする方法について説明します。 
-[1\_PCのセットアップ](../1_laptopsetup)から[4\_Raspberry Piの無線接続設定](../4_wireless)までの、各設定が済んでいる前提で説明をします。
+予め[PCの設定](../1_laptopsetup)、[Raspberry Piの設定](../3_raspisetup)、
+（LIVOX MID-360を使用する場合は、[無線接続設定](../4_wireless)、[MID360の接続設定](../5_livox)）
+を完了してからこちらに進んでください。
 
 ## 必要な物
 | Software         | Version                                      |
@@ -32,7 +34,7 @@ source ~/.bashrc
     ros2 launch raspicat raspicat.launch.py
     ```
 
-    ノートPCで実行
+    ノートPC（docker）で実行
     ``` bash
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
@@ -44,8 +46,25 @@ source ~/.bashrc
     ros2 launch raspicat raspicat.launch.py urg:=ethernet
     ```
 
+    ノートPC（docker）で実行
+    ``` bash
+    ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+    ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
+    ```
+
+=== "LIVOX LiDAR"
+    Raspberry Piで実行
+    ``` bash
+    ros2 launch raspicat raspicat.launch.py
+    ```
+
     ノートPCで実行
     ``` bash
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+    ros2 launch livox_ros_driver2 msg_MID360_launch.py
+    ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
+    ```
+    ノートPC（docker）で実行
+    ```bash
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
     ```
