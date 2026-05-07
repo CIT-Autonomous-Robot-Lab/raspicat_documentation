@@ -1,9 +1,7 @@
 ## 概要
 Raspberry Pi Catでナビゲーションを行うため
 Raspberry Piの環境構築手順について説明します。  
-予めノートPCのセットアップを完了してからこちらに進んでください。
-**ノートPC**とRaspberry Pi Catに搭載されている**Raspberry Pi**同士をLANケーブル
-で接続しセットアップを行います。
+予め[ノートPCのセットアップ](../1_laptopsetup)を完了してからこちらに進んでください。
 
 ## 必要な物
 | Software         | OS VERSION(ROS DISTRO) |
