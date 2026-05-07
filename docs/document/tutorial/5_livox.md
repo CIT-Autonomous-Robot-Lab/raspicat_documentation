@@ -7,10 +7,9 @@ authors:
 date: 2026-5-1
 ---
 
-# LIVOX MID-360
-Mid-360を使用する際には，こちらを行ってください．
-
-[LIVOX MID-360](https://www.livoxtech.com/jp/mid-360)
+# LIVOX MID-360 セットアップ
+LIVOX社のMID-360を使用するための手順を説明します。
+MID-360については、[こちら](https://www.livoxtech.com/jp/mid-360)を参照してください。
 
 ## 1. 有線のプロファイル作成
 
@@ -21,7 +20,7 @@ Mid-360を使用する際には，こちらを行ってください．
 | :----: | :----: | :----: | :----: | :----: |
 | livox-host | 192.168.1.50 | 255.255.255.0 | 192.168.1.1 | 192.168.1.1 |
 
-LIVOXを接続し、以下のスクリプトを実行することで設定できる
+LIVOXを接続し、以下のスクリプトを実行することで設定できる。
 ```bash
 #!/bin/bash
 
@@ -178,23 +177,25 @@ ping 192.168.1.119
         /tf_static [tf2_msgs/msg/TFMessage]
         ```
 
-=== "pointcloud\_to\_laserscanのインストール"
+## 4.pointcloud\_to\_laserscanのインストール
+3次元点群から2次元点群にリアルタイムで変換するパッケージです。
+/scanを使用する場合には、必要になります。
 
-    ### 4.1 ドライバのclone
+### 4.1 ドライバのclone
 
-    ```bash
-    cd $HOME/livox_ws/src
-    git clone -b humble https://github.com/CIT-Autonomous-Robot-Lab/pointcloud_to_laserscan.git
-    ```
+```bash
+cd $HOME/livox_ws/src
+git clone -b humble https://github.com/CIT-Autonomous-Robot-Lab/pointcloud_to_laserscan.git
+```
 
-    ### 4.2 build
+### 4.2 build
 
-    ```bash
-    cd $HOME/livox_ws/
-    colcon build --packages-select pointcloud_to_laserscan
-    source /opt/ros/humble/setup.sh
-    source $HOME/livox_ws/install/setup.bash
-    ```
+```bash
+cd $HOME/livox_ws/
+colcon build --packages-select pointcloud_to_laserscan
+source /opt/ros/humble/setup.sh
+source $HOME/livox_ws/install/setup.bash
+```
 <!-- 
 ## 4. 参考
 
