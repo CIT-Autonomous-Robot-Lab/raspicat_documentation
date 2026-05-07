@@ -1,7 +1,7 @@
 ## 概要
 Raspberry Pi Catに無線経由でssh接続する方法を説明します。  
-[ノートPCの設定](./2_laptopsetup.md)と
-[Raspberry Piの設定](../3_raspisetup.md)が済んでいる前提で説明をします。
+予め[ノートPCの設定](../1_laptopsetup)と
+[Raspberry Piの設定](../3_raspisetup)を完了してからこちらに進んでください。
 
 ## 必要な物
 | Software         | OS Version(ROS DISTRO)                                      |
