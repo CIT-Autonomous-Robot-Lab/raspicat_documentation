@@ -34,7 +34,7 @@ source ~/.bashrc
     ros2 launch raspicat raspicat.launch.py
     ```
 
-    ノートPC（docker）で実行
+    ノートPCで実行
     ``` bash
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
@@ -46,7 +46,7 @@ source ~/.bashrc
     ros2 launch raspicat raspicat.launch.py urg:=ethernet
     ```
 
-    ノートPC（docker）で実行
+    ノートPCで実行
     ``` bash
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
@@ -63,8 +63,5 @@ source ~/.bashrc
     ros2 service call /motor_power std_srvs/SetBool '{data: true}'
     ros2 launch livox_ros_driver2 msg_MID360_launch.py
     ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
-    ```
-    ノートPC（docker）で実行
-    ```bash
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
     ```
