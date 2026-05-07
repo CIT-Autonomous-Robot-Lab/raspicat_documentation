@@ -23,49 +23,103 @@ Raspberry Pi Catで地図作成をする方法について説明します。
 
 === "Offline Mapping"
 
-    #### Raspberry Piでの実行
+    === "Serial LiDAR"
+        #### Raspberry Piでの実行
+    
+        コントローラはRaspberry Piに接続
+        （PCから操作する場合は，[こちら](../6_teleop)を参照）
+        ```sh
+        ros2 launch raspicat raspicat.launch.py
+        ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+        ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
+        ```
+        #### ノートPCでの実行
+        以下のコマンドでセンサデータを取得、ロボットを動かした後ctrl+Cで保存
+        ```sh
+        # 全トピックを取得したい場合
+        ros2 bag record -a -o ${HOME}/rosbag_mapping/
+    
+        # 特定のトピックのみを取得したい場合
+        ros2 bag record -o ${HOME}/rosbag_mapping/ /odom /scan /tf /tf_static
+        ```
+    
+        #### ノートPCでの実行（rosbag保存後）
+    
+        ```sh
+        ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
+        ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
+        # ~/map に保存
+        ros2 run nav2_map_server map_saver_cli -f ~/map
+        ```
 
-    コントローラはRaspberry Piに接続
-    ```sh
-    ros2 launch raspicat raspicat.launch.py
-    ros2 service call /motor_power std_srvs/SetBool '{data: true}'
-    ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
-    ```
-    （PCから操作する場合は，[こちら](../6_teleop)を参照）
-    ```sh
-    # 全トピックを取得したい場合
-    ros2 bag record -a -o ${HOME}/rosbag_mapping/
+    === "LIVOX LiDAR"
+        #### Raspberry Piでの実行
+    
+        コントローラはRaspberry Piに接続
+        （PCから操作する場合は，[こちら](../6_teleop)を参照）
+        ```sh
+        ros2 launch raspicat raspicat.launch.py
+        ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+        ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
+        ```
 
-    # 特定のトピックのみを取得したい場合
-    ros2 bag record -o ${HOME}/rosbag_mapping/ /odom /scan /tf /tf_static
-    ```
+        #### ノートPCでの実行
+        以下のコマンドでセンサデータを取得、ロボットを動かした後ctrl+Cで保存
+        ```sh
+        ros2 launch livox_ros_driver2 msg_MID360_launch.py
+        ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
 
-    #### ノートPCでの実行
-
-    ```sh
-    # 取得したrosbagをノートPCに移動（有線接続の場合）
-    sudo scp -r ubuntu@10.42.0.1:~/rosbag_mapping $HOME
-
-    ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
-    ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
-    # ~/map に保存
-    ros2 run nav2_map_server map_saver_cli -f ~/map
-    ```
+        # 全トピックを取得したい場合
+        ros2 bag record -a -o ${HOME}/rosbag_mapping/
+    
+        # 特定のトピックのみを取得したい場合
+        ros2 bag record -o ${HOME}/rosbag_mapping/ /odom /scan /tf /tf_static
+        ```
+    
+        #### ノートPCでの実行（rosbag保存後）
+    
+        ```sh
+        ros2 bag play -r 1 --clock 100 $HOME/rosbag_mapping
+        ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
+        # ~/map に保存
+        ros2 run nav2_map_server map_saver_cli -f ~/map
+        ```
 
 === "Online Mapping"
 
-    #### Raspberry Piでの実行
+    === "Serial LiDAR"
+        #### Raspberry Piでの実行
+    
+        コントローラはRaspberry Piに接続
+        ```sh
+        ros2 launch raspicat raspicat.launch.py
+        ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+        ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
+        ```
+    
+        #### ノートPCでの実行
+        ```sh
+        ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
+        # ~/map に保存
+        ros2 run nav2_map_server map_saver_cli -f ~/map
+        ```
 
-    コントローラはRaspberry Piに接続
-    ```sh
-    ros2 launch raspicat raspicat.launch.py
-    ros2 service call /motor_power std_srvs/SetBool '{data: true}'
-    ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
-    ```
+    === "LIVOX LiDAR"
 
-    #### ノートPCでの実行
-    ```sh
-    ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
-    # ~/map に保存
-    ros2 run nav2_map_server map_saver_cli -f ~/map
-    ```
+        #### Raspberry Piでの実行
+    
+        コントローラはRaspberry Piに接続
+        ```sh
+        ros2 launch raspicat raspicat.launch.py
+        ros2 service call /motor_power std_srvs/SetBool '{data: true}'
+        ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
+        ```
+    
+        #### ノートPCでの実行
+        ```sh
+        ros2 launch livox_ros_driver2 msg_MID360_launch.py
+        ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
+        ros2 launch raspicat_slam raspicat_slam_toolbox.launch.py
+        # ~/map に保存
+        ros2 run nav2_map_server map_saver_cli -f ~/map
+        ```
