@@ -45,7 +45,7 @@ GPUありの方を実行してください。
 
     ``` sh
     git clone https://github.com/CIT-Autonomous-Robot-Lab/raspicat-sim-docker
-    cd raspicat-sim-docker/ros2-humble-gpu
+    cd raspicat-sim-docker/ros2-gpu
     docker build --build-arg USERNAME=$USER -t raspicat-sim:humble -f Dockerfile .
     ```
 
@@ -53,7 +53,7 @@ GPUありの方を実行してください。
 
     ``` sh
     git clone https://github.com/CIT-Autonomous-Robot-Lab/raspicat-sim-docker
-    cd raspicat-sim-docker/ros2-humble
+    cd raspicat-sim-docker/ros2-cpu
     docker build --build-arg USERNAME=$USER -t raspicat-sim:humble -f Dockerfile .
     ```
 
