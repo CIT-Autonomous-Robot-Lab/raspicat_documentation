@@ -89,3 +89,4 @@ colcon_cd raspicat_setup_scripts
 ./time_synchronization/scripts/setup_remote_pc.sh
 ```
 
+[次のページへ進む](../2_raspicat_simulator){ .md-button }

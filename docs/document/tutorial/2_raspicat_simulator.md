@@ -202,3 +202,5 @@ ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml use_
   作成した地図を使用して、ロボットのナビゲーションを行いましょう！  
   `1`と同様に指定された経路通りにロボットを走行させましょう！  
   `GazeboとRVizの両方を同時に録画したもの`をslackに貼り付けてください
+
+[次のページへ進む](../3_raspisetup){ .md-button }

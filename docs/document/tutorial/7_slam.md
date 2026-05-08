@@ -123,3 +123,5 @@ Raspberry Pi Catで地図作成をする方法について説明します。
         # ~/map に保存
         ros2 run nav2_map_server map_saver_cli -f ~/map
         ```
+
+[次のページへ進む](../8_nav){ .md-button }

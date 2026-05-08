@@ -51,3 +51,5 @@ ssh ubuntu@192.168.12.1
 !!! Warning
     Raspberry Piのホットスポットに接続している場合、外部のネットワークへの通信ができなくなります。  
     Googleでの検索等がしたい場合は、ノートPCでEthernet接続をして通信をする方法があります。
+
+[次のページへ進む](../5_livox){ .md-button }

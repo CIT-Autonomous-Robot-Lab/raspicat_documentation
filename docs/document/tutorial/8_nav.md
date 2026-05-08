@@ -65,3 +65,5 @@ source ~/.bashrc
     ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
     ros2 launch raspicat_navigation raspicat_nav2.launch.py map:=$HOME/map.yaml
     ```
+
+[次のページへ進む](../9_navwithemcl){ .md-button }
