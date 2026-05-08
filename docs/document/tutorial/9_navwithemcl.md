@@ -1,43 +1,59 @@
-# raspicat_full Docker Environment
-raspicatのナビゲーション（Nav2 + EMCL2）をDocker環境で実行するための手順です。
+---
+title: 2026しらたま環境Dockerセットアップマニュアル
+summary: 2026でしらたまチームが使用したnav2（ウェイポイントナビゲーション）とemcl2のDocker環境
+authors:
+    - Takaya Mizumaki
+    - Keitaro Nakamura
+date: 2026-5-8
+---
 
-# 1. セットアップ（初回のみ）
-ホストPC側で以下のブロックをコピー＆ペーストして実行してください。
-shiratama ディレクトリの作成から、Dockerイメージの取得、起動スクリプトの作成まで一括で行います。
+# ウェイポイントナビゲーション
+ウェイポイントナビゲーション（Nav2 + EMCL2）を2026しらたまDocker環境で実行する方法を説明します。
+
+## 1. セットアップ（初回のみ）
+
+* 作業ディレクトリの作成
 ```bash
-# 作業ディレクトリの作成
 mkdir -p shiratama && cd shiratama
+```
 
-# Dockerイメージの取得
+* Dockerイメージの取得
+```bash
 docker pull takabnbn/raspicat_full:v2
+```
 
-# 起動スクリプトの作成
+* 起動スクリプトの作成
+```bash
 cat <<EOF > run_docker.sh
-#!/bin/bash
-# GUI表示の許可
-xhost +local:docker > /dev/null
+```
 
-# コンテナの起動
+* GUI表示の許可
+```bash
+xhost +local:docker > /dev/null
+```
+
+* コンテナの起動
+```bash
 docker run -it --rm \\
   --net=host \\
   --env="DISPLAY" \\
   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \\
   takabnbn/raspicat_full:v1
 EOF
-
-# 実行権限の付与
-chmod +x run_docker.sh
-
-echo "Setup complete! 'shiratama' folder is ready."
 ```
 
-# 2. コンテナの起動とビルド
-## ステップ1：コンテナの起動（ホストPC）
+* 実行権限の付与
+```bash
+chmod +x run_docker.sh
+```
+
+## 2. コンテナの起動とビルド
+* コンテナの起動（PC）
 ```bash
 ./run_docker.sh
 ```
-## ステップ2：ワークスペースの構築（コンテナ内）
-コンテナに入ったら、以下のコマンドで環境を初期化・ビルドします。
+* ワークスペースの構築（コンテナ内）  
+コンテナに入った後、環境の初期化とビルドします。
 ```bash
 cd /opt/project
 
@@ -50,23 +66,20 @@ source install/setup.bash
 export ROS_DOMAIN_ID=1
 ```
 
-# 3. ナビゲーションの実行
-通信設定の確認
-重要： ロボット（Raspberry Pi）とノートパソコン（Dockerコンテナ）の両方で、
-必ず以下の環境変数が設定されていることを確認してください。
-```bash
-export ROS_DOMAIN_ID=1
-```
+!!!通信設定の確認
+    重要： ロボット（Raspberry Pi）とノートパソコン（Dockerコンテナ）の両方で、
+    必ず以下の環境変数が設定されていることを確認してください。
+    ```bash
+    export ROS_DOMAIN_ID=1
+    ```
 
-# 実行コマンド
-ロボット側にSSH接続(注1)し、以下のコマンドでナビゲーション（EMCL2 + Nav2）を起動します。
-ホストで
+## 3. ナビゲーション
+* PC側の実行
 ```bash
 ros2 launch raspicat_navigation emcl2_raspicat_nav2.launch.py map:=/opt/project/map.yaml
 ```
-ロボット側(ssh接続した画面)で
+* ラズパイ側の実行
 ```bash
 ros2 launch raspicat raspicat.launch.py
-#下は別のターミナルで
-ros2 service call /motor_power std_srvs/SetBool '{data: true}' # <-タイムアウトしたらもう一回実行
+ros2 service call /motor_power std_srvs/SetBool '{data: true}' 
 ```
