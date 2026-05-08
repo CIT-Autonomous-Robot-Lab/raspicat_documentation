@@ -5,8 +5,8 @@ Raspberry Pi Catでナビゲーションを行うための
 ### 前提
 Linux（Ubuntu）のネイティブの環境が必要です。
 （Windows上で動くUbuntuはWSL環境です。余程の物好きでない限りWSL環境でセットアップするのは止めましょう。）
-基本的には、デュアルブートを行うことになります。
-デュアルブートの手順の概略のみ掲載しますが、__詳しくはご自身で調べてください。__
+そのため、基本的にはデュアルブートを行うことになります。  
+こちらには、デュアルブートの手順の概略のみ掲載しますが、__セットアップを進める際にはご自身で調べてください。__
 
 * BitLockerの解除
 * Secure Bootの解除
@@ -17,7 +17,7 @@ Linux（Ubuntu）のネイティブの環境が必要です。
 ## 必要な物
 | Software         | Version                                      |
 | ---------------- | -------------------------------------------- | 
-| ノートPC         | Ubuntu 22.04（ROS 2 Humble) |
+| Linux | Ubuntu 22.04 |
 
 | Hardware            |
 | ------------------- |
@@ -29,7 +29,7 @@ Linux（Ubuntu）のネイティブの環境が必要です。
 * Gitのインストール
 ```sh
 sudo apt update
-sudo apt install git
+sudo apt install -y git
 git --version
 # git version 2.x.x のように出力さればインストール成功
 ```
@@ -58,7 +58,7 @@ bash <(curl -s https://raw.githubusercontent.com/uhobeike/ros2_humble_install_sc
 
 ### 2. ワークスペースの構築
 
-* Install apt pkg  
+* 必要なパッケージのインストール
 ```sh
 sudo apt install -y git python3-vcstool xterm
 ```
@@ -68,7 +68,7 @@ sudo apt install -y git python3-vcstool xterm
 curl -s https://raw.githubusercontent.com/uhobeike/ssh_config_cit/master/config >> ~/.ssh/config
 ```
 
-* Set Up Workspace
+* 関連するパッケージのインストール
 ```sh
 git clone git@github.com:CIT-Autonomous-Robot-Lab/raspicat2.git $HOME/raspicat2
 grep -q "source $HOME/raspicat2/install/setup.bash" ~/.bashrc || echo "source $HOME/raspicat2/install/setup.bash" >> ~/.bashrc
@@ -82,9 +82,8 @@ colcon build --symlink-install
 source $HOME/.bashrc
 ```
 
-### 3. 時刻同期のための設定
+### 3. 時刻同期のための設定（PC側）
 
-* Run script
 ```sh
 colcon_cd raspicat_setup_scripts
 ./time_synchronization/scripts/setup_remote_pc.sh
