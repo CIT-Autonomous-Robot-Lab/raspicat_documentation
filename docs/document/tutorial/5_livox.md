@@ -66,58 +66,59 @@ ping 192.168.1.119
 
 <!-- 3.4はタブで分ける -->
 
-=== "ROSなし動作確認"
+=== "3.1 ROSなし動作確認"
 
     <!-- ## 3. ROSなし動作確認 -->
 
     !!! note
         cloneする場所は `ROS 2: Humble動作確認` と揃えているが、別の場所でも問題ない
     
-    ### 3.1 clone
+    ### 3.1.1 clone
     ```bash
     mkdir -p $HOME/livox_ws/src
     cd $HOME/livox_ws/src
     git clone https://github.com/Livox-SDK/Livox-SDK2
     ```
 
-    ### 3.2 build
+    ### 3.1.2 build
     ```bash
     cd $HOME/livox_ws/src/Livox-SDK2/ && mkdir build && cd build
     cmake .. && make -j
     sudo make install
     ```
 
-    ### 3.3 `host_ip`の設定
+    ### 3.1.3 `host_ip`の設定
     ```bash
     sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/Livox-SDK2/samples/livox_lidar_quick_start/mid360_config.json
     ```
 
-    ### 3.4 実行
+    ### 3.1.4 実行
     ```bash
     cd $HOME/livox_ws/src/Livox-SDK2/build/samples/livox_lidar_quick_start/
     ./livox_lidar_quick_start ../../../samples/livox_lidar_quick_start/mid360_config.json
     ```
 
-=== "ROS 2: Humble動作確認"
+=== "3.2 ROS 2: Humble動作確認"
 
     <!-- ## 4. ROS 2: Humble動作確認 -->
 
 
     !!! warning
         `FAST_LIO`とはワークスペースを分ける
-    ### 3.1 新規ワークスペースの作成
+
+    ### 3.2.1 新規ワークスペースの作成
 
     ```bash
     mkdir $HOME/livox_ws/src -p && cd $HOME/livox_ws/src
     ```
 
-    ### 3.2 ドライバのclone
+    ### 3.2.2 ドライバのclone
 
     ```bash
     git clone https://github.com/Livox-SDK/livox_ros_driver2
     ```
 
-    ### 3.3 build.sh:61行目の変更
+    ### 3.2.3 build.sh:61行目の変更
     ```bash
     sed -i 's/colcon build --cmake-args -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}/' $HOME/livox_ws/src/livox_ros_driver2/build.sh
 
@@ -128,7 +129,7 @@ ping 192.168.1.119
     +    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DROS_EDITION=${VERSION_ROS2} -DHUMBLE_ROS=${ROS_HUMBLE}
     ```
 
-    ### 3.4 [msg_MID360_launch.py](https://github.com/Livox-SDK/livox_ros_driver2/blob/master/launch_ROS2/msg_MID360_launch.py#L8)の変更
+    ### 3.2.4 [msg_MID360_launch.py](https://github.com/Livox-SDK/livox_ros_driver2/blob/master/launch_ROS2/msg_MID360_launch.py#L8)の変更
     ```bash
     sed -i 's/xfer_format   = 1/xfer_format   = 0/' $HOME/livox_ws/src/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py
     ```
@@ -140,14 +141,14 @@ ping 192.168.1.119
     !!! note
         `/livox/lidar`のメッセージ型を`sensor_msgs/msg/PointCloud2`に設定
 
-    ### 3.5 hostpcとLIVOXのIPアドレスの設定
+    ### 3.2.5 hostpcとLIVOXのIPアドレスの設定
 
     ```bash
     sed -i "s/192.168.1.5/192.168.1.50/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     sed -i "s/192.168.1.12/192.168.1.119/g" $HOME/livox_ws/src/livox_ros_driver2/config/MID360_config.json
     ```
 
-    ### 3.6 build
+    ### 3.2.6 build
 
     ```bash
     cd $HOME/livox_ws/src/livox_ros_driver2
@@ -156,7 +157,7 @@ ping 192.168.1.119
     source $HOME/livox_ws/install/setup.bash
     ```
 
-    ### 3.7 実行
+    ### 3.2.7 実行
 
     ```bash
     ros2 launch livox_ros_driver2 rviz_MID360_launch.py
