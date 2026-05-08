@@ -29,12 +29,12 @@ Raspberry Pi Catで地図作成をする方法について説明します。
         コントローラはRaspberry Piに接続
         （PCから操作する場合は，[こちら](../6_teleop)を参照）
         ```sh
-        ros2 launch raspicat raspicat.launch.py
+        ros2 launch raspicat raspicat.launch.py # urg:=ethernet #ethernet lidarのとき
         ros2 service call /motor_power std_srvs/SetBool '{data: true}'
         ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
         ```
         #### ノートPCでの実行
-        以下のコマンドでセンサデータを取得、ロボットを動かした後ctrl+Cで保存
+        どちらかのコマンドで実行している間のセンサデータを取得、ctrl+Cで保存
         ```sh
         # 全トピックを取得したい場合
         ros2 bag record -a -o ${HOME}/rosbag_mapping/
@@ -64,7 +64,7 @@ Raspberry Pi Catで地図作成をする方法について説明します。
         ```
 
         #### ノートPCでの実行
-        以下のコマンドでセンサデータを取得、ロボットを動かした後ctrl+Cで保存
+        どちらかのコマンドで実行している間のセンサデータを取得、ctrl+Cで保存
         ```sh
         ros2 launch livox_ros_driver2 msg_MID360_launch.py
         ros2 launch pointcloud_to_laserscan mid360_pointcloud2_to_laserscan.launch.py
@@ -92,7 +92,7 @@ Raspberry Pi Catで地図作成をする方法について説明します。
     
         コントローラはRaspberry Piに接続
         ```sh
-        ros2 launch raspicat raspicat.launch.py
+        ros2 launch raspicat raspicat.launch.py # urg:=ethernet #ethernet lidarのとき
         ros2 service call /motor_power std_srvs/SetBool '{data: true}'
         ros2 launch raspicat_bringup teleop.launch.py teleop:=joy
         ```
