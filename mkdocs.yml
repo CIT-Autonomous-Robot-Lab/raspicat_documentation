@@ -87,10 +87,10 @@ nav:
     - 3 Raspberry Piのセットアップ: document/tutorial/3_raspisetup.md 
     - 4 Raspberry Piの無線接続設定: document/tutorial/4_wireless.md 
     - 5 MID-360の接続設定: document/tutorial/5_livox.md 
-    - 6 TeleOperation: document/tutorial/6_teleop.md 
-    - 7 SLAM: document/tutorial/7_slam.md 
-    - 8 Navigation2: document/tutorial/8_nav.md 
-    - 9 Nav2 とemcl2 でナビゲーション: document/tutorial/9_navwithemcl.md 
+    - 6 手動操作: document/tutorial/6_teleop.md 
+    - 7 地図作成: document/tutorial/7_slam.md 
+    - 8 ナビゲーション: document/tutorial/8_nav.md 
+    - 9 ウェイポイントナビゲーション: document/tutorial/9_navwithemcl.md 
   - Simulator:
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
     - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
