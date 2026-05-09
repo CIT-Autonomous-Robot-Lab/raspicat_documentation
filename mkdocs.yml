@@ -4,7 +4,7 @@ site_author: Tatsuhiro Ikebe
 
 repo_name: uhobeike/raspicat_documentation 
 repo_url: https://github.com/uhobeike/raspicat_documentation
-repo: fontawesome/brands/github
+# repo: fontawesome/brands/github
 
 copyright: Copyright &copy; 2022 Tatsuhiro Ikebe
 
@@ -81,16 +81,26 @@ nav:
   - このサイトについて: index.md
 - Document:
   - Raspberry Pi Catについて: document/raspicat_documentaion.md
-  
+  - Tutorial:
+    - 1 ノートPCのセットアップ: document/tutorial/1_laptopsetup.md 
+    - 2 Raspberry Pi Cat シミュレータ: document/tutorial/2_raspicat_simulator.md 
+    - 3 Raspberry Piのセットアップ: document/tutorial/3_raspisetup.md 
+    - 4 Raspberry Piの無線接続設定: document/tutorial/4_wireless.md 
+    - 5 MID-360の接続設定: document/tutorial/5_livox.md 
+    - 6 手動操作: document/tutorial/6_teleop.md 
+    - 7 地図作成: document/tutorial/7_slam.md 
+    - 8 ナビゲーション: document/tutorial/8_nav.md 
+    - 9 ウェイポイントナビゲーション: document/tutorial/9_navwithemcl.md 
   - Simulator:
-    - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
     - Raspberry Pi Cat Simulator: document/simulator/raspicat_simulator.md
+    - Create Raspberry Pi Cat Simulation World: document/simulator/create_raspicat_simulation_world.md
   - Real Machine:
     - Set Up:
       - 有線LAN（Ethernet）: document/real_machine/set_up/wired.md
       - 無線LAN（Wi-Fi）: document/real_machine/set_up/wireless.md
       - Ethernet LiDAR の接続: document/real_machine/set_up/ethernet_lidar.md
       - Livox MID-360 環境構築: document/real_machine/set_up/livox.md
+      - Livox MID-360 と Raspberry Piの同時有線接続設定: document/real_machine/set_up/livox_wired.md
     - Clone & Restore:
       - バックアップイメージの取得とリストア: document/real_machine/clone_restore.md
     - Basic Operation: 
