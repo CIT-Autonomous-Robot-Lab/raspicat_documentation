@@ -21,11 +21,8 @@ date: 2026-4-30
 | livox-Raspi-switch | 192.168.1.50 | 255.255.255.0 | - | - |
 | - | 10.42.0.1 | 255.255.255.0 | - | - |
 
-<!---
 LIVOXを接続し、以下のスクリプトを実行することで設定できる
 ```bash
-#!/bin/bash
-
 # ip linkコマンドの出力を取得
 ip_output=$(ip link)
 
@@ -35,21 +32,42 @@ pattern="(eno|enp|ens|enx|eth0)[[:alnum:]]*"
 # ネットワークインターフェース名の抽出
 interface_name=$(echo "$ip_output" | grep -oE "$pattern")
 
-echo "ネットワークインターフェース名: $interface_name"
 
-sudo nmcli connection add \
-con-name livox-host \
-ifname $interface_name \
-type ethernet \
-ipv4.method manual \
-ipv4.address 192.168.1.50/24 \
-ipv4.gateway 192.168.1.1 \
-ipv6.method disabled \
-ipv4.dns 192.168.1.1
+# プロファイル名
+PROFILE_NAME="livox-raspi-SwitchingHub"
 
-nmcli connection up livox-host
+# IPv4設定1
+IPV4_ADDRESS_1="10.42.0.1/24"
+GATEWAY_IPV4_1=""
+
+# IPv4設定2
+IPV4_ADDRESS_2="192.168.1.50/24"
+GATEWAY_IPV4_2=""
+
+# IPv6設定（無効にする）
+IPV6_METHOD="ignore"
+
+# ネットワーク接続を作成（最初のIPv4アドレス）
+nmcli connection add type ethernet ifname $interface_name con-name $PROFILE_NAME ipv4.addresses $IPV4_ADDRESS_1 ipv4.method manual ipv6.method $IPV6_METHOD
+
+# 2つ目のIPv4アドレスを追加
+nmcli connection modify $PROFILE_NAME +ipv4.addresses $IPV4_ADDRESS_2
+
+# ゲートウェイ1がある場合に設定
+if [ -n "$GATEWAY_IPV4_1" ]; then
+    nmcli connection modify $PROFILE_NAME ipv4.gateway $GATEWAY_IPV4_1
+fi
+
+# ゲートウェイ2がある場合に設定
+if [ -n "$GATEWAY_IPV4_2" ]; then
+    nmcli connection modify $PROFILE_NAME ipv4.gateway $GATEWAY_IPV4_2
+fi
+
+# 接続を有効化
+nmcli connection up $PROFILE_NAME
+
 ```
---->
+
 ## 2. IPアドレス確認
 
 - IPアドレス: 192.168.1.1XX (XXはシリアル番号の末尾2桁)
